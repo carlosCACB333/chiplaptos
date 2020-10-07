@@ -9,9 +9,11 @@ import clases.IMPRIMIR;
 import clases.control;
 import clases.validar;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -23,9 +25,9 @@ public class alumno extends javax.swing.JDialog {
           * Creates new form alumno
           */
          public alumno(java.awt.Frame parent, boolean modal) {
-                  
+
                   super(parent, modal);
-                  
+
                   initComponents();
                   setTitle("alunmos");
                   control.fillTable2(tabla, " select * from v_alumnos");
@@ -400,7 +402,6 @@ public class alumno extends javax.swing.JDialog {
                                                                        + tabla.getValueAt(tabla.getSelectedRow(), 2) + "  " + tabla.getValueAt(tabla.getSelectedRow(), 3) + "?") == 0) {
                                                                         // ------------instruccion para actualizar ---------------------------------------------------
                                                                         int alumno_id = Integer.parseInt(tabla.getValueAt(tabla.getSelectedRow(), 0).toString());
-                                                                      
 
                                                                         String nom = txt_nom.getText().trim();
                                                                         String apell = txt_apell.getText().trim();
@@ -576,7 +577,6 @@ public class alumno extends javax.swing.JDialog {
                                    + tabla.getValueAt(tabla.getSelectedRow(), 2) + "  " + tabla.getValueAt(tabla.getSelectedRow(), 3) + "?") == 0) {
 
                                     int alumno_id = Integer.parseInt(tabla.getValueAt(tabla.getSelectedRow(), 0).toString());
-                                 
 
                                     String sql = String.format("call eliminar_alumnos(%s)", alumno_id);
 
@@ -632,8 +632,15 @@ public class alumno extends javax.swing.JDialog {
 
          private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                   // TODO add your handling code here:
-                //  control.reporteEstatico("src\\reportes\\alumnos.jasper");
-                
+                  //  control.reporteEstatico("src\\reportes\\alumnos.jasper");
+                  HashMap parametros = new HashMap<>();
+                  JasperViewer reporte = control.showReport("reportes/alumnos.jasper", parametros);
+                  try {
+                           reporte.setTitle("estos son todo los alumnos");
+                  } catch (Exception e) {
+                  }
+
+
          }//GEN-LAST:event_jButton1ActionPerformed
 
          /**
