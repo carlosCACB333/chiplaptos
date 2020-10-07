@@ -31,6 +31,7 @@ public class entregas extends javax.swing.JDialog {
                   super(parent, modal);
                   initComponents();
                   lista.setModel(modelo);
+                  setLocationRelativeTo(null);
          }
 
          private void limpiar() {

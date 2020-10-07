@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="297a7e92-5fb0-4cf1-9289-a1c8e0ebd72c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="escuela" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select nomesc from escuela inner join facultad on escuela.idFacultad=facultad.idFacultad where nomfac=$P{escuela}]]>
+	</queryString>
+	<field name="nomesc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="45" y="7" width="224" height="20" backcolor="#0099FF" uuid="347f8577-5c36-4dfe-8a41-661c3ed066d9"/>
+				<text><![CDATA[escuelas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="45" y="0" width="224" height="20" forecolor="#FFFFFF" backcolor="#0033CC" uuid="c58c7d59-9787-4ba8-be6a-e8e7d16913e7"/>
+				<textFieldExpression><![CDATA[$F{nomesc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

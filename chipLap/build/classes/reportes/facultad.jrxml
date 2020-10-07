@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a05036f6-561f-42ec-9346-04be28d845d1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from facultad]]>
+	</queryString>
+	<field name="idFacultad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomfac" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="13" y="0" width="100" height="20" forecolor="#000000" backcolor="#FF0033" uuid="acb3e263-b5f8-47d8-88f2-85948c1008fa"/>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="113" y="0" width="442" height="20" forecolor="#000000" backcolor="#FF0033" uuid="7324acef-5f73-4249-89dd-d05832c3c59c"/>
+				<text><![CDATA[facultad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="77" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="10" y="0" width="103" height="20" backcolor="#FF0033" uuid="233d832a-27e1-4f54-a208-a14bae358954"/>
+				<textFieldExpression><![CDATA[$F{idFacultad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="113" y="0" width="419" height="20" backcolor="#FF0033" uuid="c6ed7935-6205-4b4f-b375-e91717a408df"/>
+				<textFieldExpression><![CDATA[$F{nomfac}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="10" y="20" width="200" height="53" uuid="8051b570-56fe-4471-b67c-8ebbdb9efa94"/>
+				<subreportParameter name="escuela">
+					<subreportParameterExpression><![CDATA[$F{nomfac}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:\\Users\\LENOVO\\Documents\\NetBeansProjects\\chipLap\\src\\reportes\\escuelas.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
