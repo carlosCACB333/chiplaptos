@@ -142,11 +142,12 @@ public class login extends javax.swing.JFrame {
 
                   if (login.length() != 0 && pass.length() != 0) {
                            String sql = String.format("call login('%s','%s');", login, pass);
-                           String resp = control.returnData(sql);
-                           if (resp.equalsIgnoreCase("1")) {
-                                    sql = String.format("select login from usuario where login='%s' and psw=md5('%s')", login, pass);
-                                    resp = control.returnData(sql);
-                                    (new principal(resp)).setVisible(true);
+                           String usuario_id = control.returnData(sql);
+                        
+                           if (!usuario_id.equalsIgnoreCase("-1")) {
+                                    sql = String.format("select idusuario from usuario where login='%s' and psw=md5('%s')", login, pass);
+                                    usuario_id = control.returnData(sql);
+                                    (new principal(usuario_id)).setVisible(true);
                                     this.setVisible(false);
 
                            } else {

@@ -5,6 +5,7 @@
  */
 package ventanas;
 
+import clases.control;
 import java.awt.Color;
 
 /**
@@ -12,6 +13,8 @@ import java.awt.Color;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class principal extends javax.swing.JFrame {
+
+         int usuario_id = 3;
 
          /**
           * Creates new form principal
@@ -22,13 +25,14 @@ public class principal extends javax.swing.JFrame {
                   setTitle("programa principal");
          }
 
-         public principal(String login) {
+         public principal(String usuario_id) {
                   initComponents();
+                  this.usuario_id = Integer.parseInt(usuario_id);
                   setLocationRelativeTo(null);
                   setTitle("programa principal");
-                   this.getContentPane().setBackground(new Color(33, 76, 102));
-                  
-                  jLabel1.setText(login+", te damos la coordial bienvenida!");
+                  this.getContentPane().setBackground(new Color(33, 76, 102));
+                  String usuario = control.returnData("select login from usuario where idUsuario="+this.usuario_id);
+                  jLabel1.setText(usuario + ", te damos la coordial bienvenida!");
          }
 
          /**
@@ -163,8 +167,8 @@ public class principal extends javax.swing.JFrame {
 
          private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
                   // TODO add your handling code here:
-                  
-                  (new entregas(this, false)).setVisible(true);
+
+                  (new entregas(this, false,usuario_id)).setVisible(true);
          }//GEN-LAST:event_jMenuItem5ActionPerformed
 
          /**

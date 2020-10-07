@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class entregas extends javax.swing.JDialog {
-
+         int usuario_id=3;
          DefaultListModel modelo = new DefaultListModel();
 
          /**
@@ -29,6 +29,14 @@ public class entregas extends javax.swing.JDialog {
           */
          public entregas(java.awt.Frame parent, boolean modal) {
                   super(parent, modal);
+                  initComponents();
+                  lista.setModel(modelo);
+                  setLocationRelativeTo(null);
+         }
+         
+           public entregas(java.awt.Frame parent, boolean modal,int usuario_id) {
+                  super(parent, modal);
+                  this.usuario_id=usuario_id;
                   initComponents();
                   lista.setModel(modelo);
                   setLocationRelativeTo(null);
@@ -294,7 +302,7 @@ public class entregas extends javax.swing.JDialog {
                   if (modelo.getSize() == 1) {
                            String sql = String.format("select id from v_alumnos where dni='%s' or codigo='%s'", txt_buscar.getText().trim(), txt_buscar.getText().trim());
                            int alumno_id = Integer.parseInt(control.returnData(sql));
-                           sql = String.format("insert into entrega values(null,curdate(),curtime(),%s,2)", alumno_id);
+                           sql = String.format("insert into entrega values(null,curdate(),curtime(),%s,%s)", alumno_id,usuario_id);
                            int resp = control.update(sql);
 
                            int entrega_id = Integer.parseInt(control.returnData("select idEntrega from entrega order by idEntrega desc limit 1 "));
@@ -310,7 +318,7 @@ public class entregas extends javax.swing.JDialog {
                            String sql = String.format("select id from v_alumnos where dni='%s' or codigo='%s'", txt_buscar.getText().trim(), txt_buscar.getText().trim());
                            int alumno_id = Integer.parseInt(control.returnData(sql));
 
-                           sql = String.format("insert into entrega values(null,curdate(),curtime(),%s,2)", alumno_id);
+                           sql = String.format("insert into entrega values(null,curdate(),curtime(),%s,%s)", alumno_id,usuario_id);
                            int resp = control.update(sql);
 
                            int entrega_id = Integer.parseInt(control.returnData("select idEntrega from entrega order by idEntrega desc limit 1 "));
