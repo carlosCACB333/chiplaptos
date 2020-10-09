@@ -63,6 +63,8 @@ public class principal extends javax.swing.JFrame {
                   jMenu3 = new javax.swing.JMenu();
                   jMenuItem6 = new javax.swing.JMenuItem();
                   jMenuItem7 = new javax.swing.JMenuItem();
+                  jMenuItem8 = new javax.swing.JMenuItem();
+                  jMenuItem9 = new javax.swing.JMenuItem();
 
                   setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,7 +146,28 @@ public class principal extends javax.swing.JFrame {
 
                   jMenuItem7.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem7.setText("reporte de alumnos que faltan entregar");
+                  jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem7ActionPerformed(evt);
+                           }
+                  });
                   jMenu3.add(jMenuItem7);
+
+                  jMenuItem8.setText("reporte de entregas entre fechas");
+                  jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem8ActionPerformed(evt);
+                           }
+                  });
+                  jMenu3.add(jMenuItem8);
+
+                  jMenuItem9.setText("facultades");
+                  jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem9ActionPerformed(evt);
+                           }
+                  });
+                  jMenu3.add(jMenuItem9);
 
                   jMenuBar1.add(jMenu3);
 
@@ -216,6 +239,33 @@ public class principal extends javax.swing.JFrame {
                   }
          }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+         private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+                  // TODO add your handling code here:
+
+                  (new entregas_por_intervalo(this, false)).setVisible(true);
+         }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+         private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+                  // TODO add your handling code here:
+                  HashMap parametros = new HashMap<>();
+                  JasperViewer reporte = control.showReport("reportes/no_entregados.jasper", parametros);
+                  try {
+                           reporte.setTitle("alumnos que no han sido entregados");
+                  } catch (Exception e) {
+                  }
+         }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+         private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+                  // TODO add your handling code here:
+
+                  HashMap parametros = new HashMap<>();
+                  JasperViewer reporte = control.showReport("reportes/principalFacultad.jasper", parametros);
+                  try {
+                           reporte.setTitle("reporte de facultades y escuelas");
+                  } catch (Exception e) {
+                  }
+         }//GEN-LAST:event_jMenuItem9ActionPerformed
+
          /**
           * @param args the command line arguments
           */
@@ -266,5 +316,7 @@ public class principal extends javax.swing.JFrame {
          private javax.swing.JMenuItem jMenuItem5;
          private javax.swing.JMenuItem jMenuItem6;
          private javax.swing.JMenuItem jMenuItem7;
+         private javax.swing.JMenuItem jMenuItem8;
+         private javax.swing.JMenuItem jMenuItem9;
          // End of variables declaration//GEN-END:variables
 }
