@@ -45,12 +45,17 @@ public class login extends javax.swing.JFrame {
 
                   setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+                  jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+                  jLabel1.setForeground(new java.awt.Color(255, 255, 255));
                   jLabel1.setText("iniciar sesion");
 
+                  jLabel2.setForeground(new java.awt.Color(255, 255, 255));
                   jLabel2.setText("login");
 
+                  jLabel3.setForeground(new java.awt.Color(255, 255, 255));
                   jLabel3.setText("contraseña");
 
+                  jButton1.setForeground(new java.awt.Color(255, 255, 255));
                   jButton1.setText("ir");
                   jButton1.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +105,7 @@ public class login extends javax.swing.JFrame {
 
                   jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-                  jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Escudo_de_la_UNASAM.png"))); // NOI18N
+                  jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/escudo.png"))); // NOI18N
 
                   javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                   getContentPane().setLayout(layout);
@@ -109,7 +114,7 @@ public class login extends javax.swing.JFrame {
                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGap(113, 113, 113)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,7 +133,7 @@ public class login extends javax.swing.JFrame {
                                              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                       .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                       .addGap(44, 44, 44)))
-                                    .addContainerGap(14, Short.MAX_VALUE))
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                   );
 
                   pack();

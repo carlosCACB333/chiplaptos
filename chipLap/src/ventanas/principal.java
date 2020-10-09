@@ -7,6 +7,11 @@ package ventanas;
 
 import clases.control;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.util.HashMap;
+import javax.swing.ImageIcon;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -30,8 +35,7 @@ public class principal extends javax.swing.JFrame {
                   this.usuario_id = Integer.parseInt(usuario_id);
                   setLocationRelativeTo(null);
                   setTitle("programa principal");
-                  this.getContentPane().setBackground(new Color(33, 76, 102));
-                  String usuario = control.returnData("select login from usuario where idUsuario="+this.usuario_id);
+                  String usuario = control.returnData("select login from usuario where idUsuario=" + this.usuario_id);
                   jLabel1.setText(usuario + ", te damos la coordial bienvenida!");
          }
 
@@ -56,18 +60,25 @@ public class principal extends javax.swing.JFrame {
                   jMenuItem4 = new javax.swing.JMenuItem();
                   jMenu2 = new javax.swing.JMenu();
                   jMenuItem5 = new javax.swing.JMenuItem();
+                  jMenu3 = new javax.swing.JMenu();
+                  jMenuItem6 = new javax.swing.JMenuItem();
+                  jMenuItem7 = new javax.swing.JMenuItem();
 
                   setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
                   jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+                  jLabel1.setForeground(new java.awt.Color(255, 255, 255));
 
                   jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/universidad.jpg"))); // NOI18N
 
                   jLabel3.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+                  jLabel3.setForeground(new java.awt.Color(255, 255, 255));
                   jLabel3.setText("SISTEMA DE ENTREGA DE CHIPS Y LAPTOP");
 
+                  jMenu1.setForeground(new java.awt.Color(255, 255, 255));
                   jMenu1.setText("registros");
 
+                  jMenuItem1.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem1.setText("registrar faculades");
                   jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +87,7 @@ public class principal extends javax.swing.JFrame {
                   });
                   jMenu1.add(jMenuItem1);
 
+                  jMenuItem2.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem2.setText("registrar escuelas");
                   jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +96,7 @@ public class principal extends javax.swing.JFrame {
                   });
                   jMenu1.add(jMenuItem2);
 
+                  jMenuItem3.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem3.setText(" registrar alumnos");
                   jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +105,7 @@ public class principal extends javax.swing.JFrame {
                   });
                   jMenu1.add(jMenuItem3);
 
+                  jMenuItem4.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem4.setText("registrar administradores");
                   jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,8 +116,10 @@ public class principal extends javax.swing.JFrame {
 
                   jMenuBar1.add(jMenu1);
 
+                  jMenu2.setForeground(new java.awt.Color(255, 255, 255));
                   jMenu2.setText("entregas");
 
+                  jMenuItem5.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem5.setText("entregar materiales");
                   jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +129,24 @@ public class principal extends javax.swing.JFrame {
                   jMenu2.add(jMenuItem5);
 
                   jMenuBar1.add(jMenu2);
+
+                  jMenu3.setForeground(new java.awt.Color(255, 255, 255));
+                  jMenu3.setText("reportes");
+
+                  jMenuItem6.setForeground(new java.awt.Color(255, 255, 255));
+                  jMenuItem6.setText("reporte de entregas");
+                  jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem6ActionPerformed(evt);
+                           }
+                  });
+                  jMenu3.add(jMenuItem6);
+
+                  jMenuItem7.setForeground(new java.awt.Color(255, 255, 255));
+                  jMenuItem7.setText("reporte de alumnos que faltan entregar");
+                  jMenu3.add(jMenuItem7);
+
+                  jMenuBar1.add(jMenu3);
 
                   setJMenuBar(jMenuBar1);
 
@@ -168,8 +202,19 @@ public class principal extends javax.swing.JFrame {
          private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
                   // TODO add your handling code here:
 
-                  (new entregas(this, false,usuario_id)).setVisible(true);
+                  (new entregas(this, false, usuario_id)).setVisible(true);
          }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+         private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+                  // TODO add your handling code here:
+
+                  HashMap parametros = new HashMap<>();
+                  JasperViewer reporte = control.showReport("reportes/entregas.jasper", parametros);
+                  try {
+                           reporte.setTitle("mostrando los detalles de las entregas");
+                  } catch (Exception e) {
+                  }
+         }//GEN-LAST:event_jMenuItem6ActionPerformed
 
          /**
           * @param args the command line arguments
@@ -212,11 +257,14 @@ public class principal extends javax.swing.JFrame {
          private javax.swing.JLabel jLabel3;
          private javax.swing.JMenu jMenu1;
          private javax.swing.JMenu jMenu2;
+         private javax.swing.JMenu jMenu3;
          private javax.swing.JMenuBar jMenuBar1;
          private javax.swing.JMenuItem jMenuItem1;
          private javax.swing.JMenuItem jMenuItem2;
          private javax.swing.JMenuItem jMenuItem3;
          private javax.swing.JMenuItem jMenuItem4;
          private javax.swing.JMenuItem jMenuItem5;
+         private javax.swing.JMenuItem jMenuItem6;
+         private javax.swing.JMenuItem jMenuItem7;
          // End of variables declaration//GEN-END:variables
 }

@@ -5,9 +5,9 @@
  */
 package chiplap;
 
+import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 import javax.swing.UIManager;
 import ventanas.login;
-import ventanas.principal;
 
 /**
  *
@@ -30,7 +30,8 @@ public class ChipLap {
 
                   } catch (Exception e) {
                   }
-
+            
+                 FlatCarbonIJTheme .install();
                   (new login()).setVisible(true);
          }
 

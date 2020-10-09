@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package clases;
-
-import com.itextpdf.text.log.Logger;
-import java.awt.event.KeyEvent;
-import java.lang.System.Logger.Level;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
@@ -125,7 +121,7 @@ public class control {
                                     data = resultSet.getString(1);
                            }
                   } catch (SQLException ex) {
-                           System.out.println(" error al retornar el  un dato");
+                           System.out.println(" error al retornar   un dato");
                       ex.printStackTrace();
                            JOptionPane.showMessageDialog(null, ex.getMessage());
                   }
@@ -254,40 +250,6 @@ public class control {
 
          }
 
-         static public void reporteEstatico(String ruta) {
-
-                  try {
-
-                           JasperReport jrep = (JasperReport) JRLoader.loadObjectFromFile(ruta);
-                           JasperPrint jprin = JasperFillManager.fillReport(jrep, null, getConnetion());
-                           JasperViewer jview = new JasperViewer(jprin, false);
-                           jview.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                           jview.setVisible(true);
-                           jview.setAlwaysOnTop(true);
-
-                  } catch (Exception e) {
-                           e.printStackTrace();
-                           JOptionPane.showMessageDialog(null, e.getMessage());
-                  }
-         }
-
-         static public void reporteConParametro(String ruta, String varible, Object valor) {
-
-                  try {
-                           Map parametro = new HashMap();
-                           parametro.put(varible, valor);
-
-                           JasperReport jrep = (JasperReport) JRLoader.loadObjectFromFile(ruta);
-                           JasperPrint jprin = JasperFillManager.fillReport(jrep, parametro, getConnetion());
-                           JasperViewer jview = new JasperViewer(jprin, false);
-                           jview.setDefaultCloseOperation(0);
-                           jview.setVisible(true);
-                           jview.setAlwaysOnTop(true);
-                  } catch (Exception e) {
-                           e.printStackTrace();
-                           JOptionPane.showMessageDialog(null, e.getMessage());
-                  }
-         }
 
          public static JasperViewer showReport(String nombreR, HashMap parameters) {
                   try {
