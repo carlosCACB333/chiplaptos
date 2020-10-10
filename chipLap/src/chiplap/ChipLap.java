@@ -31,7 +31,7 @@ public class ChipLap {
                   } catch (Exception e) {
                   }
             
-                 FlatCarbonIJTheme .install();
+              //   FlatCarbonIJTheme .install();
                   (new login()).setVisible(true);
          }
 

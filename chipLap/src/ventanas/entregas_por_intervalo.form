@@ -115,6 +115,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/img/infromacion-hojas.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="mostrar reporte"/>
       </Properties>
       <Events>
@@ -123,6 +126,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/img/incorrecto.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="cancelar"/>
       </Properties>
       <Events>
@@ -131,7 +137,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="salir"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/img/hogar.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="finalizar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

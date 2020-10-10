@@ -67,27 +67,28 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="54" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="btn_crear" min="-2" pref="77" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn_actualizar" min="-2" pref="97" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btn_borrar" min="-2" pref="77" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btn_cancelar" min="-2" pref="83" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btn_salir" min="-2" pref="77" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace pref="81" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="jTextField1" min="-2" pref="766" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="btn_crear" min="-2" pref="130" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btn_actualizar" min="-2" pref="130" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_borrar" min="-2" pref="130" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_cancelar" min="-2" pref="130" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_salir" min="-2" pref="130" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -99,15 +100,14 @@
                       <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_crear" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_actualizar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_borrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_salir" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_crear" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btn_actualizar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btn_borrar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btn_cancelar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btn_salir" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -128,6 +128,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_crear">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/a&#xf1;adir.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="crear"/>
           </Properties>
           <Events>
@@ -136,6 +139,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_actualizar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/libro.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="actualizar"/>
           </Properties>
           <Events>
@@ -144,6 +150,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_borrar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/eliminar2.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="eliminar"/>
           </Properties>
           <Events>
@@ -152,6 +161,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_cancelar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/incorrecto.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="cancelar"/>
           </Properties>
           <Events>
@@ -160,7 +172,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_salir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="salir"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/hogar.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="finalizar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_salirActionPerformed"/>

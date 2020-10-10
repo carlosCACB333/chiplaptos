@@ -196,6 +196,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="bt_grabar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/guardar-el-archivo.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="grabar entrega"/>
           </Properties>
           <Events>
@@ -204,6 +207,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="bt_cancelar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/incorrecto.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="cancelar"/>
           </Properties>
           <Events>
@@ -212,7 +218,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="bt_salir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="salir"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/hogar.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="finalizar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_salirActionPerformed"/>

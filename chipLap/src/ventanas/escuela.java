@@ -64,6 +64,7 @@ public class escuela extends javax.swing.JDialog {
 
                   jLabel2.setText("escuela");
 
+                  bt_crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/añadir.png"))); // NOI18N
                   bt_crear.setText("crear");
                   bt_crear.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +72,7 @@ public class escuela extends javax.swing.JDialog {
                            }
                   });
 
+                  btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/libro.png"))); // NOI18N
                   btn_actualizar.setText("actualizar");
                   btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +80,7 @@ public class escuela extends javax.swing.JDialog {
                            }
                   });
 
+                  btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar2.png"))); // NOI18N
                   btn_eliminar.setText("eliminar");
                   btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +88,7 @@ public class escuela extends javax.swing.JDialog {
                            }
                   });
 
+                  btn_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incorrecto.png"))); // NOI18N
                   btn_cancelar.setText("cancelar");
                   btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +96,7 @@ public class escuela extends javax.swing.JDialog {
                            }
                   });
 
+                  btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hogar.png"))); // NOI18N
                   btn_salir.setText("salir");
                   btn_salir.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +111,7 @@ public class escuela extends javax.swing.JDialog {
                            .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(54, 54, 54)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                                       .addComponent(jLabel1)
                                                       .addGap(18, 18, 18)
                                                       .addComponent(cb_facultad, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -115,18 +120,17 @@ public class escuela extends javax.swing.JDialog {
                                                       .addGap(18, 18, 18)
                                                       .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                        .addComponent(bt_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGap(30, 30, 30)
-                                                                        .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGap(34, 34, 34)
-                                                                        .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGap(39, 39, 39)
-                                                                        .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGap(30, 30, 30)
-                                                                        .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGap(0, 185, Short.MAX_VALUE))
-                                                               .addComponent(jTextField1))))
-                                    .addGap(61, 61, 61))
+                                                                        .addComponent(bt_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                        .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGap(18, 18, 18)
+                                                                        .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGap(18, 18, 18)
+                                                                        .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGap(18, 18, 18)
+                                                                        .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                               .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(0, 61, Short.MAX_VALUE))
                   );
                   jPanel1Layout.setVerticalGroup(
                            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,11 +145,11 @@ public class escuela extends javax.swing.JDialog {
                                              .addComponent(jLabel2))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                             .addComponent(btn_actualizar)
-                                             .addComponent(bt_crear)
-                                             .addComponent(btn_eliminar)
-                                             .addComponent(btn_cancelar)
-                                             .addComponent(btn_salir))
+                                             .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addComponent(bt_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addContainerGap())
                   );
 
@@ -193,7 +197,7 @@ public class escuela extends javax.swing.JDialog {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                              .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                              .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addContainerGap(23, Short.MAX_VALUE))
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                   );
                   layout.setVerticalGroup(
                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +206,7 @@ public class escuela extends javax.swing.JDialog {
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(9, Short.MAX_VALUE))
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                   );
 
                   pack();
@@ -292,7 +296,7 @@ public class escuela extends javax.swing.JDialog {
          private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
                   // TODO add your handling code here:
                   
-                  if(JOptionPane.showConfirmDialog(btn_salir, "¿desea abandonar la aplicacion?")==0){
+                  if (JOptionPane.showConfirmDialog(btn_salir, "¿desea volver a la ventana  principal?") == 0) {
                            dispose();
                   }
          }//GEN-LAST:event_btn_salirActionPerformed

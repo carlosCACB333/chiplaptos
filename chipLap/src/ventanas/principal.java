@@ -6,11 +6,13 @@
 package ventanas;
 
 import clases.control;
+import clases.validar;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.HashMap;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -28,6 +30,7 @@ public class principal extends javax.swing.JFrame {
                   initComponents();
                   setLocationRelativeTo(null);
                   setTitle("programa principal");
+                  this.getContentPane().setBackground(new Color(33, 76, 102));
          }
 
          public principal(String usuario_id) {
@@ -37,6 +40,7 @@ public class principal extends javax.swing.JFrame {
                   setTitle("programa principal");
                   String usuario = control.returnData("select login from usuario where idUsuario=" + this.usuario_id);
                   jLabel1.setText(usuario + ", te damos la coordial bienvenida!");
+                  this.getContentPane().setBackground(new Color(33, 76, 102));
          }
 
          /**
@@ -52,6 +56,7 @@ public class principal extends javax.swing.JFrame {
                   jLabel1 = new javax.swing.JLabel();
                   jLabel2 = new javax.swing.JLabel();
                   jLabel3 = new javax.swing.JLabel();
+                  jLabel4 = new javax.swing.JLabel();
                   jMenuBar1 = new javax.swing.JMenuBar();
                   jMenu1 = new javax.swing.JMenu();
                   jMenuItem1 = new javax.swing.JMenuItem();
@@ -65,11 +70,17 @@ public class principal extends javax.swing.JFrame {
                   jMenuItem7 = new javax.swing.JMenuItem();
                   jMenuItem8 = new javax.swing.JMenuItem();
                   jMenuItem9 = new javax.swing.JMenuItem();
+                  jMenu4 = new javax.swing.JMenu();
+                  jMenuItem10 = new javax.swing.JMenuItem();
+                  jMenuItem11 = new javax.swing.JMenuItem();
+                  jMenu5 = new javax.swing.JMenu();
+                  jMenuItem12 = new javax.swing.JMenuItem();
+                  jMenuItem13 = new javax.swing.JMenuItem();
+                  jMenuItem14 = new javax.swing.JMenuItem();
 
                   setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
                   jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-                  jLabel1.setForeground(new java.awt.Color(255, 255, 255));
 
                   jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/universidad.jpg"))); // NOI18N
 
@@ -77,10 +88,11 @@ public class principal extends javax.swing.JFrame {
                   jLabel3.setForeground(new java.awt.Color(255, 255, 255));
                   jLabel3.setText("SISTEMA DE ENTREGA DE CHIPS Y LAPTOP");
 
-                  jMenu1.setForeground(new java.awt.Color(255, 255, 255));
+                  jLabel4.setFont(new java.awt.Font("Goudy Old Style", 1, 24)); // NOI18N
+                  jLabel4.setText("\"Univercidad Nacional Santiago Antúnez de mayolo\"");
+
                   jMenu1.setText("registros");
 
-                  jMenuItem1.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem1.setText("registrar faculades");
                   jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +101,6 @@ public class principal extends javax.swing.JFrame {
                   });
                   jMenu1.add(jMenuItem1);
 
-                  jMenuItem2.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem2.setText("registrar escuelas");
                   jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +109,6 @@ public class principal extends javax.swing.JFrame {
                   });
                   jMenu1.add(jMenuItem2);
 
-                  jMenuItem3.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem3.setText(" registrar alumnos");
                   jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +117,6 @@ public class principal extends javax.swing.JFrame {
                   });
                   jMenu1.add(jMenuItem3);
 
-                  jMenuItem4.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem4.setText("registrar administradores");
                   jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,10 +127,8 @@ public class principal extends javax.swing.JFrame {
 
                   jMenuBar1.add(jMenu1);
 
-                  jMenu2.setForeground(new java.awt.Color(255, 255, 255));
                   jMenu2.setText("entregas");
 
-                  jMenuItem5.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem5.setText("entregar materiales");
                   jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,10 +139,8 @@ public class principal extends javax.swing.JFrame {
 
                   jMenuBar1.add(jMenu2);
 
-                  jMenu3.setForeground(new java.awt.Color(255, 255, 255));
                   jMenu3.setText("reportes");
 
-                  jMenuItem6.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem6.setText("reporte de entregas");
                   jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +149,6 @@ public class principal extends javax.swing.JFrame {
                   });
                   jMenu3.add(jMenuItem6);
 
-                  jMenuItem7.setForeground(new java.awt.Color(255, 255, 255));
                   jMenuItem7.setText("reporte de alumnos que faltan entregar");
                   jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +175,49 @@ public class principal extends javax.swing.JFrame {
 
                   jMenuBar1.add(jMenu3);
 
+                  jMenu4.setText("sobre unasam");
+
+                  jMenuItem10.setText("página web");
+                  jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem10ActionPerformed(evt);
+                           }
+                  });
+                  jMenu4.add(jMenuItem10);
+
+                  jMenuItem11.setText("misión y visión");
+                  jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem11ActionPerformed(evt);
+                           }
+                  });
+                  jMenu4.add(jMenuItem11);
+
+                  jMenuBar1.add(jMenu4);
+
+                  jMenu5.setText("ayuda");
+
+                  jMenuItem12.setText("version del software");
+                  jMenu5.add(jMenuItem12);
+
+                  jMenuItem13.setText("manual del software");
+                  jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem13ActionPerformed(evt);
+                           }
+                  });
+                  jMenu5.add(jMenuItem13);
+
+                  jMenuItem14.setText("salir");
+                  jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem14ActionPerformed(evt);
+                           }
+                  });
+                  jMenu5.add(jMenuItem14);
+
+                  jMenuBar1.add(jMenu5);
+
                   setJMenuBar(jMenuBar1);
 
                   javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,8 +231,11 @@ public class principal extends javax.swing.JFrame {
                                                       .addGap(173, 173, 173)
                                                       .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1057, javax.swing.GroupLayout.PREFERRED_SIZE))
                                              .addGroup(layout.createSequentialGroup()
-                                                      .addGap(358, 358, 358)
-                                                      .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                      .addGap(306, 306, 306)
+                                                      .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                             .addGroup(layout.createSequentialGroup()
+                                                      .addGap(404, 404, 404)
+                                                      .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addContainerGap(180, Short.MAX_VALUE))
                   );
                   layout.setVerticalGroup(
@@ -194,10 +244,12 @@ public class principal extends javax.swing.JFrame {
                                     .addGap(35, 35, 35)
                                     .addComponent(jLabel3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(58, 58, 58)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addContainerGap())
                   );
 
                   pack();
@@ -266,6 +318,28 @@ public class principal extends javax.swing.JFrame {
                   }
          }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+         private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+                  // TODO add your handling code here:
+         }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+         private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+                  // TODO add your handling code here:
+                  validar.abrirUrl("http://www.unasam.edu.pe/");
+         }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+         private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+                  // TODO add your handling code here:
+                  validar.abrirUrl("http://www.unasam.edu.pe/WebMisionVision");
+         }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+         private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+                  // TODO add your handling code here:
+                  if (JOptionPane.showConfirmDialog(jMenuItem14, "¿desea  salir del programa?") == 0) {
+                           System.exit(0);
+                  }
+
+         }//GEN-LAST:event_jMenuItem14ActionPerformed
+
          /**
           * @param args the command line arguments
           */
@@ -305,11 +379,19 @@ public class principal extends javax.swing.JFrame {
          private javax.swing.JLabel jLabel1;
          private javax.swing.JLabel jLabel2;
          private javax.swing.JLabel jLabel3;
+         private javax.swing.JLabel jLabel4;
          private javax.swing.JMenu jMenu1;
          private javax.swing.JMenu jMenu2;
          private javax.swing.JMenu jMenu3;
+         private javax.swing.JMenu jMenu4;
+         private javax.swing.JMenu jMenu5;
          private javax.swing.JMenuBar jMenuBar1;
          private javax.swing.JMenuItem jMenuItem1;
+         private javax.swing.JMenuItem jMenuItem10;
+         private javax.swing.JMenuItem jMenuItem11;
+         private javax.swing.JMenuItem jMenuItem12;
+         private javax.swing.JMenuItem jMenuItem13;
+         private javax.swing.JMenuItem jMenuItem14;
          private javax.swing.JMenuItem jMenuItem2;
          private javax.swing.JMenuItem jMenuItem3;
          private javax.swing.JMenuItem jMenuItem4;

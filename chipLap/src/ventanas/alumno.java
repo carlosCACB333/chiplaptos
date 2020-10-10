@@ -311,13 +311,15 @@ public class alumno extends javax.swing.JDialog {
                                     .addGap(56, 56, 56))
                   );
 
-                  btn_salir.setText("salir");
+                  btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hogar.png"))); // NOI18N
+                  btn_salir.setText("finalizar");
                   btn_salir.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
                                     btn_salirActionPerformed(evt);
                            }
                   });
 
+                  btn_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incorrecto.png"))); // NOI18N
                   btn_cancelar.setText("cancelar");
                   btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,6 +327,7 @@ public class alumno extends javax.swing.JDialog {
                            }
                   });
 
+                  btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar2.png"))); // NOI18N
                   btn_eliminar.setText("eliminar");
                   btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -332,6 +335,7 @@ public class alumno extends javax.swing.JDialog {
                            }
                   });
 
+                  btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/libro.png"))); // NOI18N
                   btn_actualizar.setText("actualizar");
                   btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,6 +343,7 @@ public class alumno extends javax.swing.JDialog {
                            }
                   });
 
+                  btn_crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/añadir.png"))); // NOI18N
                   btn_crear.setText("crear");
                   btn_crear.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,15 +358,15 @@ public class alumno extends javax.swing.JDialog {
                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(41, 41, 41)
-                                    .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(117, 117, 117))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btn_eliminar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(64, 64, 64))
                            .addGroup(layout.createSequentialGroup()
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,7 +381,7 @@ public class alumno extends javax.swing.JDialog {
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                             .addComponent(btn_salir)
+                                             .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                              .addComponent(btn_cancelar)
                                              .addComponent(btn_eliminar)
                                              .addComponent(btn_actualizar)
@@ -608,7 +613,7 @@ public class alumno extends javax.swing.JDialog {
 
          private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
                   // TODO add your handling code here:
-                  if (JOptionPane.showConfirmDialog(btn_salir, "¿desea abandonar la aplicacion?") == 0) {
+                  if (JOptionPane.showConfirmDialog(btn_salir, "¿desea volver a la ventana  principal?") == 0) {
                            dispose();
                   }
          }//GEN-LAST:event_btn_salirActionPerformed

@@ -127,6 +127,7 @@ public class entregas extends javax.swing.JDialog {
 
                   jScrollPane1.setViewportView(lista);
 
+                  bt_grabar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar-el-archivo.png"))); // NOI18N
                   bt_grabar.setText("grabar entrega");
                   bt_grabar.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +135,7 @@ public class entregas extends javax.swing.JDialog {
                            }
                   });
 
+                  bt_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incorrecto.png"))); // NOI18N
                   bt_cancelar.setText("cancelar");
                   bt_cancelar.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +143,8 @@ public class entregas extends javax.swing.JDialog {
                            }
                   });
 
-                  bt_salir.setText("salir");
+                  bt_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hogar.png"))); // NOI18N
+                  bt_salir.setText("finalizar");
                   bt_salir.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
                                     bt_salirActionPerformed(evt);
@@ -343,7 +346,7 @@ public class entregas extends javax.swing.JDialog {
 
          private void bt_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salirActionPerformed
                   // TODO add your handling code here:
-                  if (JOptionPane.showConfirmDialog(bt_salir, "¿desea abandonar la aplicacion?") == 0) {
+                  if (JOptionPane.showConfirmDialog(bt_salir, "¿desea volver a la ventana  principal?") == 0) {
                            dispose();
                   }
          }//GEN-LAST:event_bt_salirActionPerformed

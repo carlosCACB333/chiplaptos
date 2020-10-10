@@ -58,6 +58,7 @@ public class entregas_por_intervalo extends javax.swing.JDialog {
                   f_final.setForeground(new java.awt.Color(255, 255, 255));
                   f_final.setDateFormatString("dd/MM/yyyy");
 
+                  jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/infromacion-hojas.png"))); // NOI18N
                   jButton1.setText("mostrar reporte");
                   jButton1.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +66,7 @@ public class entregas_por_intervalo extends javax.swing.JDialog {
                            }
                   });
 
+                  jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incorrecto.png"))); // NOI18N
                   jButton2.setText("cancelar");
                   jButton2.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +74,8 @@ public class entregas_por_intervalo extends javax.swing.JDialog {
                            }
                   });
 
-                  jButton3.setText("salir");
+                  jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hogar.png"))); // NOI18N
+                  jButton3.setText("finalizar");
                   jButton3.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
                                     jButton3ActionPerformed(evt);
@@ -154,7 +157,7 @@ public class entregas_por_intervalo extends javax.swing.JDialog {
 
          private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
                   // TODO add your handling code here:
-                  if (JOptionPane.showConfirmDialog(jButton3, "¿desea abandonar la aplicacion?") == 0) {
+                 if (JOptionPane.showConfirmDialog(jButton3, "¿desea volver a la ventana  principal?") == 0) {
                            dispose();
                   }
          }//GEN-LAST:event_jButton3ActionPerformed
