@@ -4,14 +4,13 @@
  * and open the template in the editor.
  */
 package ventanas;
-
-import clases.IMPRIMIR;
+import clases.TableStyleRenderer;
+import clases.configuracion;
 import clases.control;
+import clases.tableHeaderStyle;
 import clases.validar;
-import java.awt.event.KeyEvent;
+import java.awt.Color;
 import java.util.HashMap;
-import java.util.Objects;
-import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -20,6 +19,8 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class alumno extends javax.swing.JDialog {
+          Color fondo = configuracion.fondo;
+         Color letra = configuracion.letra;
 
          /**
           * Creates new form alumno
@@ -29,10 +30,16 @@ public class alumno extends javax.swing.JDialog {
                   super(parent, modal);
 
                   initComponents();
-                  setTitle("alunmos");
+                  setTitle("alumnos");
                   control.fillTable2(tabla, " select * from v_alumnos");
+                  validar.ocultarColumna(tabla, 0);
                   control.fillCombo(cb_escuela, "select nomesc from escuela");
                   setLocationRelativeTo(null);
+                   this.getContentPane().setBackground(fondo);
+                   
+                   tabla.getTableHeader().setDefaultRenderer(new tableHeaderStyle());
+                  tabla.setDefaultRenderer(Object.class, new TableStyleRenderer());
+                  tabla.setRowHeight(25);
          }
 
          /**
@@ -79,24 +86,33 @@ public class alumno extends javax.swing.JDialog {
 
                   setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-                  jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("datos de los alumos vulnerables"));
+                  jPanel1.setBackground(fondo);
+                  jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "datos de los alumos vulnerables", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), letra)); // NOI18N
 
+                  jLabel1.setForeground(letra);
                   jLabel1.setText("nombre");
 
+                  jLabel2.setForeground(letra);
                   jLabel2.setText("apellido");
 
+                  jLabel3.setForeground(letra);
                   jLabel3.setText("dni");
 
+                  jLabel4.setForeground(letra);
                   jLabel4.setText("codigo");
 
                   jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+                  jLabel5.setForeground(letra);
                   jLabel5.setText("direccion");
 
+                  jLabel6.setForeground(letra);
                   jLabel6.setText("correo");
 
+                  jLabel7.setForeground(letra);
                   jLabel7.setText("celular");
 
+                  jLabel8.setForeground(letra);
                   jLabel8.setText("genero");
 
                   txt_nom.setName("nombre"); // NOI18N
@@ -148,6 +164,7 @@ public class alumno extends javax.swing.JDialog {
 
                   txt_correo.setName("correo"); // NOI18N
 
+                  jLabel10.setForeground(letra);
                   jLabel10.setText("escuela");
 
                   cb_escuela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -174,7 +191,7 @@ public class alumno extends javax.swing.JDialog {
                                                                .addComponent(txt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                              .addGroup(jPanel1Layout.createSequentialGroup()
                                                       .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                      .addGap(18, 18, 18)
+                                                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                       .addComponent(cb_escuela, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,24 +214,24 @@ public class alumno extends javax.swing.JDialog {
                            .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(21, 21, 21)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                             .addComponent(txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addComponent(txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                              .addComponent(jLabel1))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                              .addComponent(jLabel2)
-                                             .addComponent(txt_apell, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                             .addComponent(txt_apell, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                             .addComponent(txt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addComponent(txt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                              .addComponent(jLabel3))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                             .addComponent(txt_cod, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addComponent(txt_cod, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                              .addComponent(jLabel4))
                                     .addGap(18, 18, 18)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                              .addComponent(jLabel10)
-                                             .addComponent(cb_escuela, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                             .addComponent(cb_escuela, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(0, 0, Short.MAX_VALUE))
                            .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,20 +241,20 @@ public class alumno extends javax.swing.JDialog {
                                                                .addGroup(jPanel1Layout.createSequentialGroup()
                                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                                  .addComponent(jLabel8)
-                                                                                 .addComponent(cb_gen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                 .addComponent(cb_gen, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                        .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addGap(6, 6, 6))
                                                                .addComponent(jLabel5))
                                                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                      .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                       .addGap(0, 0, Short.MAX_VALUE))
                                              .addGroup(jPanel1Layout.createSequentialGroup()
                                                       .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                       .addComponent(jLabel7)))
                                     .addGap(18, 18, 18)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                             .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                              .addComponent(jLabel6))
                                     .addGap(38, 38, 38))
                            .addGroup(jPanel1Layout.createSequentialGroup()
@@ -245,6 +262,8 @@ public class alumno extends javax.swing.JDialog {
                                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                   );
+
+                  jPanel2.setBackground(fondo);
 
                   tabla.setModel(new javax.swing.table.DefaultTableModel(
                            new Object [][] {
@@ -264,6 +283,7 @@ public class alumno extends javax.swing.JDialog {
                   });
                   jScrollPane1.setViewportView(tabla);
 
+                  jLabel9.setForeground(letra);
                   jLabel9.setText("buscar");
 
                   txt_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -303,7 +323,7 @@ public class alumno extends javax.swing.JDialog {
                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                             .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                              .addComponent(jLabel9)
                                              .addComponent(jButton1))
                                     .addGap(18, 18, 18)
@@ -434,6 +454,7 @@ public class alumno extends javax.swing.JDialog {
                                                                         System.out.println(sql);
                                                                         if (control.update(sql) != 0) {
                                                                                  control.fillTable2(tabla, " select * from v_alumnos");
+                                                                                 validar.ocultarColumna(tabla, 0);
                                                                                  JOptionPane.showMessageDialog(btn_actualizar, "se actualizó con éxito");
                                                                         }
 
@@ -495,6 +516,7 @@ public class alumno extends javax.swing.JDialog {
                                                       System.out.println(sql);
                                                       if (control.update(sql) != 0) {
                                                                control.fillTable2(tabla, " select * from v_alumnos");
+                                                               validar.ocultarColumna(tabla, 0);
                                                                JOptionPane.showMessageDialog(btn_crear, "se ingreso correctamente");
                                                       }
 
@@ -587,6 +609,7 @@ public class alumno extends javax.swing.JDialog {
 
                                     if (control.update(sql) != 0) {
                                              control.fillTable2(tabla, " select * from v_alumnos");
+                                             validar.ocultarColumna(tabla, 0);
                                              JOptionPane.showMessageDialog(btn_eliminar, "se eliminó correctamente");
 
                                     }
@@ -632,6 +655,7 @@ public class alumno extends javax.swing.JDialog {
                            control.fillTable2(tabla, sql);
 
                   }
+                  validar.ocultarColumna(tabla, 0);
 
          }//GEN-LAST:event_txt_buscarKeyTyped
 

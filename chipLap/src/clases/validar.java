@@ -5,7 +5,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class validar {
 
@@ -82,15 +84,28 @@ public class validar {
                   return fecha;
          }
 
-         public static boolean BuscarDatoenJList(DefaultListModel mdl, String toString) {
+         public static boolean BuscarDatoenJList(DefaultListModel mdl, String buscar) {
                   int i = mdl.getSize();
                   boolean b = false;
                   for (int j = 0; j < i; j++) {
-                           if (mdl.getElementAt(j).equals(toString)) {
+                           if (mdl.getElementAt(j).equals(buscar)) {
                                     b = true;
                            }
                   }
                   return b;
+         }
+
+         public static boolean buscarDatoEnJTable(JTable tabla, String buscar, int columna) {
+                  boolean existe = false;
+                  for (int i = 0; i < tabla.getRowCount(); i++) {
+                           if (tabla.getValueAt(i, columna).toString().equalsIgnoreCase(buscar)) {
+                                    existe = true;
+                           }
+
+                  }
+
+                  return existe;
+
          }
 
          public static void abrirUrl(String URL) {
@@ -106,5 +121,15 @@ public class validar {
                                     }
                            }
                   }
+         }
+
+         public static void ocultarColumna(JTable tabla, int columna) {
+                  try {
+                           tabla.getColumn(tabla.getColumnName(columna)).setWidth(0);
+                           tabla.getColumn(tabla.getColumnName(columna)).setMinWidth(0);
+                           tabla.getColumn(tabla.getColumnName(columna)).setMaxWidth(0);
+                  } catch (Exception e) {
+                  }
+
          }
 }

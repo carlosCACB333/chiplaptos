@@ -5,7 +5,9 @@
  */
 package ventanas;
 
+import clases.configuracion;
 import clases.control;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,13 +16,17 @@ import javax.swing.JOptionPane;
  */
 public class login extends javax.swing.JFrame {
 
+         Color fondo = configuracion.fondo;
+         Color letra = configuracion.letra;
+
          /**
           * Creates new form login
           */
          public login() {
                   initComponents();
                   setLocationRelativeTo(null);
-                  setTitle("login");
+                  setTitle("acceso al sistema");
+                  this.getContentPane().setBackground(fondo);
          }
 
          /**
@@ -45,15 +51,19 @@ public class login extends javax.swing.JFrame {
 
                   setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+                  jPanel1.setBackground(fondo);
+
                   jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+                  jLabel1.setForeground(letra);
                   jLabel1.setText("iniciar sesion");
 
+                  jLabel2.setForeground(letra);
                   jLabel2.setText("login");
 
+                  jLabel3.setForeground(letra);
                   jLabel3.setText("contraseña");
 
-                  jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/flecha-correcta (1).png"))); // NOI18N
-                  jButton1.setText("ir");
+                  jButton1.setText("ir  ");
                   jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
                   jButton1.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,9 +78,12 @@ public class login extends javax.swing.JFrame {
                            .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                              .addGroup(jPanel1Layout.createSequentialGroup()
+                                                      .addGap(154, 154, 154)
+                                                      .addComponent(jLabel1))
+                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                       .addGap(30, 30, 30)
                                                       .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                               .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                               .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                .addGroup(jPanel1Layout.createSequentialGroup()
                                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                  .addComponent(jLabel2)
@@ -78,10 +91,7 @@ public class login extends javax.swing.JFrame {
                                                                         .addGap(38, 38, 38)
                                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                                                  .addComponent(txt_login, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                                                                                 .addComponent(txt_pass)))))
-                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                      .addGap(154, 154, 154)
-                                                      .addComponent(jLabel1)))
+                                                                                 .addComponent(txt_pass))))))
                                     .addContainerGap(117, Short.MAX_VALUE))
                   );
                   jPanel1Layout.setVerticalGroup(
@@ -97,9 +107,9 @@ public class login extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                              .addComponent(jLabel3)
                                              .addComponent(txt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(26, 26, 26)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(132, Short.MAX_VALUE))
+                                    .addGap(35, 35, 35)
+                                    .addComponent(jButton1)
+                                    .addContainerGap(127, Short.MAX_VALUE))
                   );
 
                   jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -147,7 +157,7 @@ public class login extends javax.swing.JFrame {
                   if (login.length() != 0 && pass.length() != 0) {
                            String sql = String.format("call login('%s','%s');", login, pass);
                            String usuario_id = control.returnData(sql);
-                        
+                           System.out.println(sql);
                            if (!usuario_id.equalsIgnoreCase("-1")) {
                                     sql = String.format("select idusuario from usuario where login='%s' and psw=md5('%s')", login, pass);
                                     usuario_id = control.returnData(sql);

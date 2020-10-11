@@ -5,8 +5,10 @@
  */
 package ventanas;
 
+import clases.configuracion;
 import clases.control;
 import clases.validar;
+import java.awt.Color;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.view.JasperViewer;
@@ -17,6 +19,9 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class entregas_por_intervalo extends javax.swing.JDialog {
 
+         Color fondo = configuracion.fondo;
+         Color letra = configuracion.letra;
+
          /**
           * Creates new form entregas_por_intervalo
           */
@@ -24,6 +29,7 @@ public class entregas_por_intervalo extends javax.swing.JDialog {
                   super(parent, modal);
                   initComponents();
                   setLocationRelativeTo(null);
+                     this.getContentPane().setBackground(fondo);
          }
 
          /**
@@ -47,8 +53,10 @@ public class entregas_por_intervalo extends javax.swing.JDialog {
 
                   setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+                  jLabel1.setForeground(letra);
                   jLabel1.setText("fecha inicial");
 
+                  jLabel2.setForeground(letra);
                   jLabel2.setText("fecha final");
 
                   f_inicial.setBackground(new java.awt.Color(204, 204, 204));
@@ -157,7 +165,7 @@ public class entregas_por_intervalo extends javax.swing.JDialog {
 
          private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
                   // TODO add your handling code here:
-                 if (JOptionPane.showConfirmDialog(jButton3, "¿desea volver a la ventana  principal?") == 0) {
+                  if (JOptionPane.showConfirmDialog(jButton3, "¿desea volver a la ventana  principal?") == 0) {
                            dispose();
                   }
          }//GEN-LAST:event_jButton3ActionPerformed

@@ -18,6 +18,30 @@ USE `bd_chiplaptos`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `alumno_auditoria`
+--
+
+DROP TABLE IF EXISTS `alumno_auditoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `alumno_auditoria` (
+  `codigo` varchar(50) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `accion` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `alumno_auditoria`
+--
+
+LOCK TABLES `alumno_auditoria` WRITE;
+/*!40000 ALTER TABLE `alumno_auditoria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `alumno_auditoria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `alumnovulnerable`
 --
 
@@ -35,7 +59,7 @@ CREATE TABLE `alumnovulnerable` (
   KEY `fk_Escuela` (`idescuela`),
   CONSTRAINT `alumnovulnerable_ibfk_1` FOREIGN KEY (`idpersona`) REFERENCES `persona` (`idpersona`),
   CONSTRAINT `alumnovulnerable_ibfk_2` FOREIGN KEY (`idescuela`) REFERENCES `escuela` (`idEscuela`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,9 +68,26 @@ CREATE TABLE `alumnovulnerable` (
 
 LOCK TABLES `alumnovulnerable` WRITE;
 /*!40000 ALTER TABLE `alumnovulnerable` DISABLE KEYS */;
-INSERT INTO `alumnovulnerable` VALUES (1,'185.1225.156',1,2),(2,'181.2503.005',3,2),(3,'181.253.458',4,6),(4,'181.2503.055',6,2),(5,'185.1225.125',11,11),(6,'181.2503.045',12,2),(7,'181.2654.6',13,1),(8,'158.25.25',14,2),(11,'181.2503.003',17,2),(12,'181.2503.785',18,13),(14,'171.2503.005',21,15);
+INSERT INTO `alumnovulnerable` VALUES (1,'185.1225.156',1,2),(2,'181.2503.005',3,2),(3,'181.253.458',4,6),(4,'181.2503.055',6,2),(5,'185.1225.125',11,11),(6,'181.2503.045',12,2),(7,'181.2654.6',13,1),(8,'158.25.25',14,2),(11,'181.2503.003',17,2),(12,'181.2503.785',18,13),(14,'171.2503.005',21,15),(15,'181.2503.888',22,7),(16,'181.332',23,19);
 /*!40000 ALTER TABLE `alumnovulnerable` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tgr_updateAlumn` AFTER UPDATE ON `alumnovulnerable` FOR EACH ROW Begin 
+insert into alumno_auditoria values(concat(old.codalum,'-->',new.codalum),now(),user(),'UPDATE'); 
+ End */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `datosusuario`
@@ -93,7 +134,7 @@ CREATE TABLE `detalleentrega` (
   KEY `fk_entrega` (`idEntrega`),
   CONSTRAINT `detalleentrega_ibfk_1` FOREIGN KEY (`idEntrega`) REFERENCES `entrega` (`idEntrega`),
   CONSTRAINT `detalleentrega_chk_1` CHECK (((`tipo` = _latin1'Laptop') or (`tipo` = _latin1'Chip de Datos')))
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +143,7 @@ CREATE TABLE `detalleentrega` (
 
 LOCK TABLES `detalleentrega` WRITE;
 /*!40000 ALTER TABLE `detalleentrega` DISABLE KEYS */;
-INSERT INTO `detalleentrega` VALUES (1,'CHIP DE DATOS','ewklkew32',1),(4,'LAPTOP','DSKJ',3),(5,'LAPTOP','tyew',4),(6,'CHIP DE DATOS','ertt',5),(7,'CHIP DE DATOS','rt22r',7),(8,'LAPTOP','desconocido',8),(13,'LAPTOP','deconocido',9),(14,'CHIP DE DATOS','desconocido',9),(15,'LAPTOP','desconocido',10),(16,'CHIP DE DATOS','desconocido',11),(17,'CHIP DE DATOS','desconocido',12),(18,'LAPTOP','desconocido',13),(19,'CHIP DE DATOS','desconocido',14);
+INSERT INTO `detalleentrega` VALUES (1,'CHIP DE DATOS','ewklkew32',1),(4,'LAPTOP','DSKJ',3),(5,'LAPTOP','tyew',4),(6,'CHIP DE DATOS','ertt',5),(7,'CHIP DE DATOS','rt22r',7),(8,'LAPTOP','desconocido',8),(13,'LAPTOP','deconocido',9),(14,'CHIP DE DATOS','desconocido',9),(15,'LAPTOP','desconocido',10),(16,'CHIP DE DATOS','desconocido',11),(17,'CHIP DE DATOS','desconocido',12),(18,'LAPTOP','desconocido',13),(19,'CHIP DE DATOS','desconocido',14),(20,'LAPTOP','desconocido',15),(21,'LAPTOP','desconocido',16);
 /*!40000 ALTER TABLE `detalleentrega` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +165,7 @@ CREATE TABLE `entrega` (
   KEY `Usuario1` (`idUsuario`),
   CONSTRAINT `AlumnoVulnerable1` FOREIGN KEY (`idAlumnoVulnerable`) REFERENCES `alumnovulnerable` (`idAlumnoVulnerable`),
   CONSTRAINT `Usuario1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +174,7 @@ CREATE TABLE `entrega` (
 
 LOCK TABLES `entrega` WRITE;
 /*!40000 ALTER TABLE `entrega` DISABLE KEYS */;
-INSERT INTO `entrega` VALUES (1,'2020-10-01','19:10:13',1,1),(3,'2020-10-02','18:10:13',1,1),(4,'2020-10-06','20:10:21',2,2),(5,'2020-10-06','20:10:46',2,2),(7,'2020-10-06','21:31:16',4,2),(8,'2020-10-07','01:18:54',4,2),(9,'2020-10-07','01:28:15',12,2),(10,'2020-10-07','01:42:52',8,2),(11,'2020-10-07','01:45:50',8,2),(12,'2020-10-07','01:58:20',6,2),(13,'2020-10-07','07:51:30',5,3),(14,'2020-10-07','07:52:22',5,2);
+INSERT INTO `entrega` VALUES (1,'2020-10-01','19:10:13',1,1),(3,'2020-10-02','18:10:13',1,1),(4,'2020-10-06','20:10:21',2,2),(5,'2020-10-06','20:10:46',2,2),(7,'2020-10-06','21:31:16',4,2),(8,'2020-10-07','01:18:54',4,2),(9,'2020-10-07','01:28:15',12,2),(10,'2020-10-07','01:42:52',8,2),(11,'2020-10-07','01:45:50',8,2),(12,'2020-10-07','01:58:20',6,2),(13,'2020-10-07','07:51:30',5,3),(14,'2020-10-07','07:52:22',5,2),(15,'2020-10-07','10:23:21',11,3),(16,'2020-10-09','11:54:45',6,3);
 /*!40000 ALTER TABLE `entrega` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +193,7 @@ CREATE TABLE `escuela` (
   UNIQUE KEY `ctkun` (`nomesc`),
   KEY `Facultad1` (`idFacultad`),
   CONSTRAINT `Facultad1` FOREIGN KEY (`idFacultad`) REFERENCES `facultad` (`idFacultad`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,8 +202,67 @@ CREATE TABLE `escuela` (
 
 LOCK TABLES `escuela` WRITE;
 /*!40000 ALTER TABLE `escuela` DISABLE KEYS */;
-INSERT INTO `escuela` VALUES (1,'Matematica',1),(2,'Ingeniería de Sistemas e Informática',1),(3,'Estadistica e Informática',1),(4,'Administración',4),(6,'Derecho',6),(7,'Turismo',4),(9,'Enfermeria',2),(10,'obstetricia',2),(11,'Ingeniería civil',11),(12,'Arquitectura y Urbanismo',11),(13,'Contabilidad',9),(14,'Economía',9),(15,'Ingeniería de Minas',5);
+INSERT INTO `escuela` VALUES (1,'Matematica',1),(2,'Ingeniería de Sistemas e Informática',1),(3,'Estadistica e Informática',1),(4,'Administración',4),(6,'Derecho',6),(7,'Turismo',4),(9,'Enfermeria',2),(10,'obstetricia',2),(11,'Ingeniería civil',11),(12,'Arquitectura y Urbanismo',11),(13,'Contabilidad',9),(14,'Economía',9),(15,'Ingeniería de Minas',5),(18,'Ingeniería Agrícola',3),(19,'Agronomía',3),(20,'Ingenieria Industrial',15),(21,'Ingenieria de Industrias Alimentarias',15);
 /*!40000 ALTER TABLE `escuela` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tgr_updateEsc` AFTER UPDATE ON `escuela` FOR EACH ROW Begin 
+insert into escuela_auditoria values(concat(old.nomesc,'-->',new.nomesc),concat(old.idFacultad,'-->',new.idFacultad) ,now(),user(),'UPDATE'); 
+ End */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tgr_deleteEsc` AFTER DELETE ON `escuela` FOR EACH ROW Begin 
+insert into escuela_auditoria values(old.nomesc,old.idFacultad,now(),user(),'delete'); 
+ End */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `escuela_auditoria`
+--
+
+DROP TABLE IF EXISTS `escuela_auditoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `escuela_auditoria` (
+  `nomesc` varchar(100) NOT NULL,
+  `idfac` varchar(20) DEFAULT NULL,
+  `fecha` datetime NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `accion` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `escuela_auditoria`
+--
+
+LOCK TABLES `escuela_auditoria` WRITE;
+/*!40000 ALTER TABLE `escuela_auditoria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `escuela_auditoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -174,10 +274,10 @@ DROP TABLE IF EXISTS `facultad`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `facultad` (
   `idFacultad` int NOT NULL AUTO_INCREMENT,
-  `nomfac` varchar(45) NOT NULL,
+  `nomfac` varchar(100) NOT NULL,
   PRIMARY KEY (`idFacultad`),
   UNIQUE KEY `nomfac_UNIQUE` (`nomfac`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,8 +286,66 @@ CREATE TABLE `facultad` (
 
 LOCK TABLES `facultad` WRITE;
 /*!40000 ALTER TABLE `facultad` DISABLE KEYS */;
-INSERT INTO `facultad` VALUES (4,'Facultad Administración y turismo'),(13,'Facultad Ciencias del ambiente'),(1,'Facultad de Ciencias'),(3,'Facultad de Ciencias Agrarias'),(2,'Facultad de Ciencias Medica'),(6,'Facultad de Derecho y ciencias politicas'),(9,'Facultad de Economía y Contabilidad'),(7,'Facultad de Medicina Humana'),(5,'Facultad de Minas y Metalurgíca'),(11,'facultad Ingeniería Civil'),(8,'fsec');
+INSERT INTO `facultad` VALUES (11,'Facultad  de Ingeniería Civil'),(4,'Facultad Administración y turismo'),(13,'Facultad Ciencias del ambiente'),(8,'Facultad de  ciencias sociales, Educación y de la comunicación'),(1,'Facultad de Ciencias'),(3,'Facultad de Ciencias Agrarias'),(2,'Facultad de Ciencias Medica'),(6,'Facultad de Derecho y ciencias politicas'),(9,'Facultad de Economía y Contabilidad'),(15,'Facultad de Ingeniería de Industrias Alimentarias'),(7,'Facultad de Medicina Humana'),(5,'Facultad de Minas y Metalurgíca');
 /*!40000 ALTER TABLE `facultad` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tgr_updatefac` AFTER UPDATE ON `facultad` FOR EACH ROW Begin 
+insert into facultad_auditoria values(concat(old.nomfac,'-->',new.nomfac),now(),user(),'UPDATE'); 
+ End */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tgr_deletefac` AFTER DELETE ON `facultad` FOR EACH ROW Begin 
+insert into facultad_auditoria values(old.nomfac,now(),user(),'delete'); 
+ End */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `facultad_auditoria`
+--
+
+DROP TABLE IF EXISTS `facultad_auditoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `facultad_auditoria` (
+  `nomfac` varchar(100) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `accion` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `facultad_auditoria`
+--
+
+LOCK TABLES `facultad_auditoria` WRITE;
+/*!40000 ALTER TABLE `facultad_auditoria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `facultad_auditoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -235,7 +393,7 @@ CREATE TABLE `persona` (
   UNIQUE KEY `dni` (`dni`),
   CONSTRAINT `persona_chk_1` CHECK ((length(`dni`) = 8)),
   CONSTRAINT `persona_chk_2` CHECK (((`gen` = _latin1'Masculino') or (`gen` = _latin1'Femenino')))
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,8 +402,68 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,'03664700','Miguel','Silva Zapata','Masculino','Salitral','Sin Celular','Sin Email'),(3,'14587459','jason ennio','solano pillaca','Masculino','palmito','965265987','jason@gmail.com'),(4,'32100225','rosa','guadalupe jara','Femenino','shancayan av. iniversitaria','987523657','rosa@hotmail.com'),(6,'20236562','jamil quenio','florentino macayo','Masculino','en la puna','912365478','jamil@gmail.com'),(11,'45585202','jorje','de la torre ugarte','Masculino','sin Direccion','985763258','torre@gmail.com'),(12,'74563213','renzo','huerta lloclla','Masculino','sin Direccion','Sin Celular','sin Email'),(13,'86305632','gabriel','flores de la cruz','Masculino','av luzuriaga n°548','95632587','flores@unasam.edu.pe'),(14,'10101010','sesi','secilita','Femenino','en casa de su tia','985367495','sesi@gmail.com'),(17,'74391459','carlos','castillo blas','Masculino','huaraz','913472873','carlos@gmailc.com'),(18,'47455231','elizabet','moreno mori','Femenino','chinchobamba','978543258','eli@hotmail.com'),(21,'54222352','jose','figueroa','Masculino','sin Direccion','Sin Celular','jorje@gmail.com');
+INSERT INTO `persona` VALUES (1,'03664700','Miguel','Silva Zapata','Masculino','Salitral','Sin Celular','Sin Email'),(3,'14587459','jason ennio','solano pillaca','Masculino','palmito','965265987','jason@gmail.com'),(4,'32100225','rosa','guadalupe jara','Femenino','shancayan av. iniversitaria','987523657','rosa@hotmail.com'),(6,'20236562','jamil quenio','florentino macayo','Masculino','en la puna','912365478','jamil@gmail.com'),(11,'45585202','jorje','de la torre ugarte','Masculino','sin Direccion','985763258','torre@gmail.com'),(12,'74563213','renzo','huerta lloclla','Masculino','cementerio','965387569','renzo@gmail.com'),(13,'86305632','gabriel','flores de la cruz','Masculino','av luzuriaga n°548','95632587','flores@unasam.edu.pe'),(14,'10101010','sesi','secilita','Femenino','en casa de su tia','985367495','sesi@gmail.com'),(17,'74391459','carlos','castillo blas','Masculino','huaraz','913472873','carlos@gmailc.com'),(18,'47455231','elizabet','moreno mori','Femenino','chinchobamba','978543258','eli@hotmail.com'),(21,'54222352','jose','figueroa','Masculino','sin Direccion','Sin Celular','jorje@gmail.com'),(22,'26532332','emma','gonzales pérez','Masculino','sin Direccion','Sin Celular','sin Email'),(23,'52222222','yyyyyy','yyyyyy','Masculino','sin Direccion','Sin Celular','jason@gmail.com');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tgr_updatePers` AFTER UPDATE ON `persona` FOR EACH ROW Begin 
+insert into persona_auditoria values(concat(old.dni,'-->',new.dni),concat(old.nom,'-->',new.nom),concat(old.ape,'-->',new.ape) ,now(),user(),'UPDATE'); 
+ End */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tgr_deletePers` AFTER DELETE ON `persona` FOR EACH ROW Begin 
+insert into persona_auditoria values(old.dni,old.nom,old.ape,now(),user(),'delete'); 
+ End */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `persona_auditoria`
+--
+
+DROP TABLE IF EXISTS `persona_auditoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `persona_auditoria` (
+  `dni` varchar(20) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `ape` varchar(100) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `accion` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `persona_auditoria`
+--
+
+LOCK TABLES `persona_auditoria` WRITE;
+/*!40000 ALTER TABLE `persona_auditoria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `persona_auditoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -286,6 +504,7 @@ CREATE TABLE `usuario` (
   `psw` varchar(250) NOT NULL,
   `idtipousuario` int NOT NULL,
   PRIMARY KEY (`idUsuario`),
+  UNIQUE KEY `login_UNIQUE` (`login`),
   KEY `idtipousuario` (`idtipousuario`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`idtipousuario`) REFERENCES `tipousuario` (`idtipousuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
@@ -320,6 +539,23 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `correo`,
  1 AS `codigo`,
  1 AS `escuela`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_alumnosnoentrega`
+--
+
+DROP TABLE IF EXISTS `v_alumnosnoentrega`;
+/*!50001 DROP VIEW IF EXISTS `v_alumnosnoentrega`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `v_alumnosnoentrega` AS SELECT 
+ 1 AS `dni`,
+ 1 AS `Datos`,
+ 1 AS `gen`,
+ 1 AS `codalum`,
+ 1 AS `nomesc`,
+ 1 AS `Ninguna entrega`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -504,7 +740,8 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_facultad`(id int ,facu varchar(255))
 BEGIN
 declare cant int default 0;
-set cant=existe_facultad(facu);
+
+select count(*) into cant from facultad where nomfac=facu and idfacultad<>id;
 if(!cant) then 
 	update  facultad set nomfac=facu where idfacultad=id ;
     else 
@@ -689,6 +926,24 @@ DELIMITER ;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `v_alumnosnoentrega`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_alumnosnoentrega`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_alumnosnoentrega` AS select `p`.`dni` AS `dni`,concat(`p`.`ape`,' ',`p`.`nom`) AS `Datos`,`p`.`gen` AS `gen`,`a`.`codalum` AS `codalum`,`e`.`nomesc` AS `nomesc`,'Ninguna entrega' AS `Ninguna entrega` from ((`alumnovulnerable` `a` join `persona` `p` on((`p`.`idpersona` = `a`.`idpersona`))) join `escuela` `e` on((`e`.`idEscuela` = `a`.`idescuela`))) where `a`.`idAlumnoVulnerable` in (select `entrega`.`idAlumnoVulnerable` from `entrega`) is false union all select `p`.`dni` AS `dni`,concat(`p`.`ape`,' ',`p`.`nom`) AS `Datos`,`p`.`gen` AS `gen`,`a`.`codalum` AS `codalum`,`e`.`nomesc` AS `nomesc`,'Laptop' AS `Falta` from ((`alumnovulnerable` `a` join `persona` `p` on((`p`.`idpersona` = `a`.`idpersona`))) join `escuela` `e` on((`e`.`idEscuela` = `a`.`idescuela`))) where (`a`.`idAlumnoVulnerable` in (select `a`.`idAlumnoVulnerable` from ((`alumnovulnerable` `a` join `entrega` `e` on((`e`.`idAlumnoVulnerable` = `a`.`idAlumnoVulnerable`))) join `detalleentrega` `d` on((`d`.`idEntrega` = `e`.`idEntrega`))) where (`d`.`tipo` = 'Laptop')) is false and `p`.`dni` in (select `p`.`dni` from ((`alumnovulnerable` `a` join `persona` `p` on((`p`.`idpersona` = `a`.`idpersona`))) join `escuela` `e` on((`e`.`idEscuela` = `a`.`idescuela`))) where `a`.`idAlumnoVulnerable` in (select `entrega`.`idAlumnoVulnerable` from `entrega`) is false) is false) union all select `p`.`dni` AS `dni`,concat(`p`.`ape`,' ',`p`.`nom`) AS `Datos`,`p`.`gen` AS `gen`,`a`.`codalum` AS `codalum`,`e`.`nomesc` AS `nomesc`,'Chip de datos' AS `Falta` from ((`alumnovulnerable` `a` join `persona` `p` on((`p`.`idpersona` = `a`.`idpersona`))) join `escuela` `e` on((`e`.`idEscuela` = `a`.`idescuela`))) where (`a`.`idAlumnoVulnerable` in (select `a`.`idAlumnoVulnerable` from ((`alumnovulnerable` `a` join `entrega` `e` on((`e`.`idAlumnoVulnerable` = `a`.`idAlumnoVulnerable`))) join `detalleentrega` `d` on((`d`.`idEntrega` = `e`.`idEntrega`))) where (`d`.`tipo` = 'Chip de datos')) is false and `p`.`dni` in (select `p`.`dni` from ((`alumnovulnerable` `a` join `persona` `p` on((`p`.`idpersona` = `a`.`idpersona`))) join `escuela` `e` on((`e`.`idEscuela` = `a`.`idescuela`))) where `a`.`idAlumnoVulnerable` in (select `entrega`.`idAlumnoVulnerable` from `entrega`) is false) is false) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `v_detalle_entrega`
 --
 
@@ -751,4 +1006,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-07  7:57:40
+-- Dump completed on 2020-10-09 23:57:49

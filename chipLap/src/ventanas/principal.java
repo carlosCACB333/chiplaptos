@@ -5,13 +5,11 @@
  */
 package ventanas;
 
+import clases.configuracion;
 import clases.control;
 import clases.validar;
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.util.HashMap;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -29,8 +27,10 @@ public class principal extends javax.swing.JFrame {
          public principal() {
                   initComponents();
                   setLocationRelativeTo(null);
-                  setTitle("programa principal");
+                  setTitle("sistema de entregas de chips y laptos");
                   this.getContentPane().setBackground(new Color(33, 76, 102));
+
+ 
          }
 
          public principal(String usuario_id) {
@@ -41,6 +41,8 @@ public class principal extends javax.swing.JFrame {
                   String usuario = control.returnData("select login from usuario where idUsuario=" + this.usuario_id);
                   jLabel1.setText(usuario + ", te damos la coordial bienvenida!");
                   this.getContentPane().setBackground(new Color(33, 76, 102));
+
+                  (new datos_administrador(this, false, this.usuario_id)).setVisible(true);
          }
 
          /**
@@ -70,6 +72,12 @@ public class principal extends javax.swing.JFrame {
                   jMenuItem7 = new javax.swing.JMenuItem();
                   jMenuItem8 = new javax.swing.JMenuItem();
                   jMenuItem9 = new javax.swing.JMenuItem();
+                  jMenu6 = new javax.swing.JMenu();
+                  jMenuItem15 = new javax.swing.JMenuItem();
+                  jMenu7 = new javax.swing.JMenu();
+                  jMenuItem16 = new javax.swing.JMenuItem();
+                  jMenuItem17 = new javax.swing.JMenuItem();
+                  jMenuItem18 = new javax.swing.JMenuItem();
                   jMenu4 = new javax.swing.JMenu();
                   jMenuItem10 = new javax.swing.JMenuItem();
                   jMenuItem11 = new javax.swing.JMenuItem();
@@ -175,6 +183,46 @@ public class principal extends javax.swing.JFrame {
 
                   jMenuBar1.add(jMenu3);
 
+                  jMenu6.setText("administrador");
+
+                  jMenuItem15.setText("datos del administrador");
+                  jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem15ActionPerformed(evt);
+                           }
+                  });
+                  jMenu6.add(jMenuItem15);
+
+                  jMenuBar1.add(jMenu6);
+
+                  jMenu7.setText("configuración");
+
+                  jMenuItem16.setText("tema azul");
+                  jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem16ActionPerformed(evt);
+                           }
+                  });
+                  jMenu7.add(jMenuItem16);
+
+                  jMenuItem17.setText("tema oscuro");
+                  jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem17ActionPerformed(evt);
+                           }
+                  });
+                  jMenu7.add(jMenuItem17);
+
+                  jMenuItem18.setText("tema claro");
+                  jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem18ActionPerformed(evt);
+                           }
+                  });
+                  jMenu7.add(jMenuItem18);
+
+                  jMenuBar1.add(jMenu7);
+
                   jMenu4.setText("sobre unasam");
 
                   jMenuItem10.setText("página web");
@@ -198,6 +246,11 @@ public class principal extends javax.swing.JFrame {
                   jMenu5.setText("ayuda");
 
                   jMenuItem12.setText("version del software");
+                  jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+                           public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                    jMenuItem12ActionPerformed(evt);
+                           }
+                  });
                   jMenu5.add(jMenuItem12);
 
                   jMenuItem13.setText("manual del software");
@@ -224,19 +277,21 @@ public class principal extends javax.swing.JFrame {
                   getContentPane().setLayout(layout);
                   layout.setHorizontalGroup(
                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                           .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                            .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                              .addGroup(layout.createSequentialGroup()
-                                                      .addGap(173, 173, 173)
-                                                      .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1057, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                             .addGroup(layout.createSequentialGroup()
-                                                      .addGap(306, 306, 306)
-                                                      .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                             .addGroup(layout.createSequentialGroup()
-                                                      .addGap(404, 404, 404)
-                                                      .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addContainerGap(180, Short.MAX_VALUE))
+                                                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                               .addGroup(layout.createSequentialGroup()
+                                                                        .addGap(173, 173, 173)
+                                                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1057, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                               .addGroup(layout.createSequentialGroup()
+                                                                        .addGap(404, 404, 404)
+                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                      .addGap(0, 174, Short.MAX_VALUE))
+                                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                    .addContainerGap())
                   );
                   layout.setVerticalGroup(
                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,11 +300,11 @@ public class principal extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap())
+                                    .addContainerGap(26, Short.MAX_VALUE))
                   );
 
                   pack();
@@ -340,6 +395,46 @@ public class principal extends javax.swing.JFrame {
 
          }//GEN-LAST:event_jMenuItem14ActionPerformed
 
+         private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+                  // TODO add your handling code here:
+
+                  (new datos_administrador(this, true, usuario_id)).setVisible(true);
+         }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+         private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+                  // TODO add your handling code here:
+
+                  configuracion.fondo = new Color(60, 63, 65);
+                  configuracion.letra = new Color(187, 187, 187);
+
+                  this.getContentPane().setBackground(configuracion.fondo);
+                  jLabel3.setForeground(configuracion.letra);
+         }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+         private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+                  // TODO add your handling code here:
+                  configuracion.fondo = new Color(33, 76, 102);
+                  configuracion.letra = new Color(255, 255, 255);
+
+                  this.getContentPane().setBackground(configuracion.fondo);
+                  jLabel3.setForeground(configuracion.letra);
+         }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+         private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+                  // TODO add your handling code here:
+
+                  configuracion.fondo = new Color(214, 217, 223);
+                  configuracion.letra = new Color(0, 0, 0);
+                  this.getContentPane().setBackground(configuracion.fondo);
+                  jLabel3.setForeground(configuracion.letra);
+         }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+         private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+                  // TODO add your handling code here:
+                  
+                  (new version(this, false)).setVisible(true);
+         }//GEN-LAST:event_jMenuItem12ActionPerformed
+
          /**
           * @param args the command line arguments
           */
@@ -385,6 +480,8 @@ public class principal extends javax.swing.JFrame {
          private javax.swing.JMenu jMenu3;
          private javax.swing.JMenu jMenu4;
          private javax.swing.JMenu jMenu5;
+         private javax.swing.JMenu jMenu6;
+         private javax.swing.JMenu jMenu7;
          private javax.swing.JMenuBar jMenuBar1;
          private javax.swing.JMenuItem jMenuItem1;
          private javax.swing.JMenuItem jMenuItem10;
@@ -392,6 +489,10 @@ public class principal extends javax.swing.JFrame {
          private javax.swing.JMenuItem jMenuItem12;
          private javax.swing.JMenuItem jMenuItem13;
          private javax.swing.JMenuItem jMenuItem14;
+         private javax.swing.JMenuItem jMenuItem15;
+         private javax.swing.JMenuItem jMenuItem16;
+         private javax.swing.JMenuItem jMenuItem17;
+         private javax.swing.JMenuItem jMenuItem18;
          private javax.swing.JMenuItem jMenuItem2;
          private javax.swing.JMenuItem jMenuItem3;
          private javax.swing.JMenuItem jMenuItem4;

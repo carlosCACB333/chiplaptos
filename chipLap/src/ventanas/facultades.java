@@ -5,8 +5,12 @@
  */
 package ventanas;
 
+import clases.TableStyleRenderer;
+import clases.configuracion;
 import clases.control;
+import clases.tableHeaderStyle;
 import clases.validar;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +18,9 @@ import javax.swing.JOptionPane;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class facultades extends javax.swing.JDialog {
+
+         Color fondo = configuracion.fondo;
+         Color letra = configuracion.letra;
 
          /**
           * Creates new form facultades
@@ -23,7 +30,13 @@ public class facultades extends javax.swing.JDialog {
                   setTitle("facultad");
                   initComponents();
                   setLocationRelativeTo(null);
-                  control.fillTable2(jTable1, "select * from facultad");
+                  control.fillTable2(tabla, "select * from facultad");
+                  validar.ocultarColumna(tabla, 0);
+                  this.getContentPane().setBackground(fondo);
+
+                  tabla.getTableHeader().setDefaultRenderer(new tableHeaderStyle());
+                  tabla.setDefaultRenderer(Object.class, new TableStyleRenderer());
+                  tabla.setRowHeight(25);
 
          }
 
@@ -47,12 +60,15 @@ public class facultades extends javax.swing.JDialog {
                   btn_salir = new javax.swing.JButton();
                   jPanel2 = new javax.swing.JPanel();
                   jScrollPane1 = new javax.swing.JScrollPane();
-                  jTable1 = new javax.swing.JTable();
+                  tabla = new javax.swing.JTable();
                   jLabel1 = new javax.swing.JLabel();
+                  jLabel3 = new javax.swing.JLabel();
+                  txt_buscar = new javax.swing.JTextField();
 
                   setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-                  jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("datos de las  facultades"));
+                  jPanel1.setBackground(fondo);
+                  jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "datos de las  facultades", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), letra)); // NOI18N
 
                   jTextField1.addActionListener(new java.awt.event.ActionListener() {
                            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +87,7 @@ public class facultades extends javax.swing.JDialog {
                            }
                   });
 
+                  jLabel2.setForeground(letra);
                   jLabel2.setText("facultad");
 
                   btn_crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/añadir.png"))); // NOI18N
@@ -118,7 +135,7 @@ public class facultades extends javax.swing.JDialog {
                   jPanel1Layout.setHorizontalGroup(
                            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addContainerGap(81, Short.MAX_VALUE)
+                                    .addContainerGap(70, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                       .addComponent(jLabel2)
@@ -153,7 +170,9 @@ public class facultades extends javax.swing.JDialog {
                                              .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                   );
 
-                  jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                  jPanel2.setBackground(fondo);
+
+                  tabla.setModel(new javax.swing.table.DefaultTableModel(
                            new Object [][] {
                                     {null, null, null, null},
                                     {null, null, null, null},
@@ -164,15 +183,15 @@ public class facultades extends javax.swing.JDialog {
                                     "Title 1", "Title 2", "Title 3", "Title 4"
                            }
                   ));
-                  jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+                  tabla.addMouseListener(new java.awt.event.MouseAdapter() {
                            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                    jTable1MouseClicked(evt);
+                                    tablaMouseClicked(evt);
                            }
                            public void mousePressed(java.awt.event.MouseEvent evt) {
-                                    jTable1MousePressed(evt);
+                                    tablaMousePressed(evt);
                            }
                   });
-                  jScrollPane1.setViewportView(jTable1);
+                  jScrollPane1.setViewportView(tabla);
 
                   javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                   jPanel2.setLayout(jPanel2Layout);
@@ -180,18 +199,28 @@ public class facultades extends javax.swing.JDialog {
                            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addContainerGap()
-                                    .addComponent(jScrollPane1)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 965, Short.MAX_VALUE)
                                     .addContainerGap())
                   );
                   jPanel2Layout.setVerticalGroup(
                            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap())
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(27, 27, 27))
                   );
 
+                  jLabel1.setForeground(letra);
                   jLabel1.setText("registrar facultades");
+
+                  jLabel3.setForeground(letra);
+                  jLabel3.setText("buscar");
+
+                  txt_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+                           public void keyTyped(java.awt.event.KeyEvent evt) {
+                                    txt_buscarKeyTyped(evt);
+                           }
+                  });
 
                   javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                   getContentPane().setLayout(layout);
@@ -204,20 +233,31 @@ public class facultades extends javax.swing.JDialog {
                                                       .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                                              .addGroup(layout.createSequentialGroup()
                                                       .addGap(31, 31, 31)
-                                                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                               .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                               .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                               .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                 .addComponent(jLabel3)
+                                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                 .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                 .addGap(8, 8, 8))))))
                                     .addContainerGap(19, Short.MAX_VALUE))
                   );
                   layout.setVerticalGroup(
                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                            .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap(16, Short.MAX_VALUE)
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(28, 28, 28)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(26, 26, 26)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                             .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                             .addComponent(jLabel3))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(16, 16, 16))
                   );
 
                   pack();
@@ -229,22 +269,23 @@ public class facultades extends javax.swing.JDialog {
 
          private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
                   // TODO add your handling code here:
-                  if (jTable1.getSelectedRowCount() != 0) {
+                  if (tabla.getSelectedRowCount() != 0) {
                            String facu = jTextField1.getText().trim();
-                           String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+                           String id = tabla.getValueAt(tabla.getSelectedRow(), 0).toString();
                            if (facu.length() != 0) {
 
                                     if (JOptionPane.showConfirmDialog(btn_actualizar, "desea actualizar la facultad "
-                                            + jTable1.getValueAt(jTable1.getSelectedRow(), 1) + " por :\n " + jTextField1.getText().trim()) == 0) {
+                                            + tabla.getValueAt(tabla.getSelectedRow(), 1) + " por :\n " + jTextField1.getText().trim()) == 0) {
                                              String sql = String.format("call actualizar_facultad(%s,'%s')", id, facu);
                                              int resp = control.update(sql);
 
                                              if (resp != 0) {
-                                                      control.fillTable2(jTable1, "select * from facultad");
+                                                      control.fillTable2(tabla, "select * from facultad");
+                                                      validar.ocultarColumna(tabla, 0);
                                                       JOptionPane.showMessageDialog(btn_crear, "se actualizo correctamente");
 
                                              } else {
-                                                     // JOptionPane.showMessageDialog(btn_crear, "la facultad ya se encuentra registrada", "alerta", JOptionPane.WARNING_MESSAGE);
+                                                      // JOptionPane.showMessageDialog(btn_crear, "la facultad ya se encuentra registrada", "alerta", JOptionPane.WARNING_MESSAGE);
                                              }
 
                                     }
@@ -259,8 +300,8 @@ public class facultades extends javax.swing.JDialog {
 
          private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
                   // TODO add your handling code here:
-                  
-                if (JOptionPane.showConfirmDialog(btn_salir, "¿desea volver a la ventana  principal?") == 0) {
+
+                  if (JOptionPane.showConfirmDialog(btn_salir, "¿desea volver a la ventana  principal?") == 0) {
                            dispose();
                   }
          }//GEN-LAST:event_btn_salirActionPerformed
@@ -274,11 +315,12 @@ public class facultades extends javax.swing.JDialog {
                            int resp = control.update(sql);
 
                            if (resp != 0) {
-                                    control.fillTable2(jTable1, "select * from facultad");
+                                    control.fillTable2(tabla, "select * from facultad");
+                                    validar.ocultarColumna(tabla, 0);
                                     JOptionPane.showMessageDialog(btn_crear, "se ingreso correctamente");
 
                            } else {
-                                 //   JOptionPane.showMessageDialog(btn_crear, "la facultad ya se encuentra registrada", "alerta", JOptionPane.WARNING_MESSAGE);
+                                    //   JOptionPane.showMessageDialog(btn_crear, "la facultad ya se encuentra registrada", "alerta", JOptionPane.WARNING_MESSAGE);
                            }
 
                   } else {
@@ -300,25 +342,26 @@ public class facultades extends javax.swing.JDialog {
                   validar.SoloLetras(evt);
          }//GEN-LAST:event_jTextField1KeyTyped
 
-         private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+         private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
                   // TODO add your handling code here:
-         }//GEN-LAST:event_jTable1MouseClicked
+         }//GEN-LAST:event_tablaMouseClicked
 
-         private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+         private void tablaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMousePressed
                   // TODO add your handling code here:
-                  jTextField1.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
-         }//GEN-LAST:event_jTable1MousePressed
+                  jTextField1.setText(tabla.getValueAt(tabla.getSelectedRow(), 1).toString());
+         }//GEN-LAST:event_tablaMousePressed
 
          private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
                   // TODO add your handling code here:
-                  if (jTable1.getSelectedRowCount() != 0) {
-                           if (JOptionPane.showConfirmDialog(btn_borrar, "¿desea eliminar la facultad " + jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString()) == 0) {
+                  if (tabla.getSelectedRowCount() != 0) {
+                           if (JOptionPane.showConfirmDialog(btn_borrar, "¿desea eliminar la facultad " + tabla.getValueAt(tabla.getSelectedRow(), 1).toString()) == 0) {
 
-                                    String sql = String.format("delete from facultad where idfacultad =%s", jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
+                                    String sql = String.format("delete from facultad where idfacultad =%s", tabla.getValueAt(tabla.getSelectedRow(), 0).toString());
                                     System.out.println(sql);
                                     int res = control.update(sql);
                                     if (res != 0) {
-                                             control.fillTable2(jTable1, "select * from facultad");
+                                             control.fillTable2(tabla, "select * from facultad");
+                                             validar.ocultarColumna(tabla, 0);
                                              JOptionPane.showMessageDialog(btn_borrar, "se borró correctamente");
                                     }
                            }
@@ -330,9 +373,27 @@ public class facultades extends javax.swing.JDialog {
 
          private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
                   // TODO add your handling code here:
-                  jTable1.getSelectionModel().removeSelectionInterval(0, jTable1.getRowCount());
+                  tabla.getSelectionModel().removeSelectionInterval(0, tabla.getRowCount());
                   jTextField1.setText("");
          }//GEN-LAST:event_btn_cancelarActionPerformed
+
+         private void txt_buscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyTyped
+                  // TODO add your handling code here:
+
+                  int pos = txt_buscar.getCaretPosition();
+                  String parametro = (txt_buscar.getText().substring(0, pos) + evt.getKeyChar() + txt_buscar.getText().substring(pos)).trim();
+
+                  if (parametro.trim().length() == 0) {
+                           control.fillTable2(tabla, "select * from facultad");
+
+                  } else {
+
+                           String sql = "select * from facultad where nomfac like '%" + parametro + "%'";
+                           control.fillTable2(tabla, sql);
+
+                  }
+                  validar.ocultarColumna(tabla, 0);
+         }//GEN-LAST:event_txt_buscarKeyTyped
 
          /**
           * @param args the command line arguments
@@ -384,10 +445,12 @@ public class facultades extends javax.swing.JDialog {
          private javax.swing.JButton btn_salir;
          private javax.swing.JLabel jLabel1;
          private javax.swing.JLabel jLabel2;
+         private javax.swing.JLabel jLabel3;
          private javax.swing.JPanel jPanel1;
          private javax.swing.JPanel jPanel2;
          private javax.swing.JScrollPane jScrollPane1;
-         private javax.swing.JTable jTable1;
          private javax.swing.JTextField jTextField1;
+         private javax.swing.JTable tabla;
+         private javax.swing.JTextField txt_buscar;
          // End of variables declaration//GEN-END:variables
 }

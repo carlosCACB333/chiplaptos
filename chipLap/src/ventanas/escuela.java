@@ -5,8 +5,12 @@
  */
 package ventanas;
 
+import clases.TableStyleRenderer;
+import clases.configuracion;
 import clases.control;
+import clases.tableHeaderStyle;
 import clases.validar;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +18,8 @@ import javax.swing.JOptionPane;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class escuela extends javax.swing.JDialog {
+          Color fondo = configuracion.fondo;
+         Color letra = configuracion.letra;
 
          /**
           * Creates new form escuela
@@ -23,7 +29,14 @@ public class escuela extends javax.swing.JDialog {
                   initComponents();
                   setLocationRelativeTo(null);
                   control.fillTable2(tabla, "select *from  v_escuela_detalle");
+                  validar.ocultarColumna(tabla, 0);
                   control.fillCombo(cb_facultad, "select nomfac from facultad");
+                  
+                    this.getContentPane().setBackground(fondo);
+                   
+                   tabla.getTableHeader().setDefaultRenderer(new tableHeaderStyle());
+                  tabla.setDefaultRenderer(Object.class, new TableStyleRenderer());
+                  tabla.setRowHeight(25);
          }
 
          /**
@@ -49,9 +62,15 @@ public class escuela extends javax.swing.JDialog {
                   jPanel2 = new javax.swing.JPanel();
                   jScrollPane1 = new javax.swing.JScrollPane();
                   tabla = new javax.swing.JTable();
+                  jLabel3 = new javax.swing.JLabel();
+                  txt_buscar = new javax.swing.JTextField();
 
                   setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+                  jPanel1.setBackground(fondo);
+                  jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "registrar escuelas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), letra)); // NOI18N
+
+                  jLabel1.setForeground(letra);
                   jLabel1.setText("facultad");
 
                   jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -62,6 +81,7 @@ public class escuela extends javax.swing.JDialog {
 
                   cb_facultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+                  jLabel2.setForeground(letra);
                   jLabel2.setText("escuela");
 
                   bt_crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/añadir.png"))); // NOI18N
@@ -153,6 +173,8 @@ public class escuela extends javax.swing.JDialog {
                                     .addContainerGap())
                   );
 
+                  jPanel2.setBackground(fondo);
+
                   tabla.setModel(new javax.swing.table.DefaultTableModel(
                            new Object [][] {
                                     {null, null, null, null},
@@ -184,19 +206,35 @@ public class escuela extends javax.swing.JDialog {
                            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                            .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addContainerGap()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(18, Short.MAX_VALUE))
                   );
+
+                  jLabel3.setForeground(letra);
+                  jLabel3.setText("buscar");
+
+                  txt_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+                           public void keyTyped(java.awt.event.KeyEvent evt) {
+                                    txt_buscarKeyTyped(evt);
+                           }
+                  });
 
                   javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                   getContentPane().setLayout(layout);
                   layout.setHorizontalGroup(
                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                            .addGroup(layout.createSequentialGroup()
-                                    .addGap(45, 45, 45)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                             .addGroup(layout.createSequentialGroup()
+                                                      .addGap(45, 45, 45)
+                                                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                               .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                               .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                             .addGroup(layout.createSequentialGroup()
+                                                      .addGap(64, 64, 64)
+                                                      .addComponent(jLabel3)
+                                                      .addGap(28, 28, 28)
+                                                      .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                   );
                   layout.setVerticalGroup(
@@ -205,6 +243,10 @@ public class escuela extends javax.swing.JDialog {
                                     .addGap(56, 56, 56)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                             .addComponent(jLabel3)
+                                             .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(4, 4, 4)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                   );
@@ -221,6 +263,7 @@ public class escuela extends javax.swing.JDialog {
                            String sql = String.format("call insertar_escuela('%s','%s')", esc, cb_facultad.getSelectedItem().toString());
                            if (control.update(sql) != 0) {
                                     control.fillTable2(tabla, "select *from  v_escuela_detalle");
+                                    validar.ocultarColumna(tabla, 0);
                                     JOptionPane.showMessageDialog(bt_crear, "se ingresó correctamente");
                            }
                   } else {
@@ -256,6 +299,7 @@ public class escuela extends javax.swing.JDialog {
                                              System.out.println(sql);
                                              if (control.update(sql) != 0) {
                                                       control.fillTable2(tabla, "select *from  v_escuela_detalle");
+                                                      validar.ocultarColumna(tabla, 0);
                                                       JOptionPane.showMessageDialog(btn_actualizar, "se actualizo correctamente");
                                              }
                                     }
@@ -275,6 +319,7 @@ public class escuela extends javax.swing.JDialog {
                                     String sql = String.format("delete from escuela where idescuela=%s", tabla.getValueAt(tabla.getSelectedRow(), 0).toString());
                                     if (control.update(sql) != 0) {
                                              control.fillTable2(tabla, "select *from  v_escuela_detalle");
+                                             validar.ocultarColumna(tabla, 0);
                                              JOptionPane.showMessageDialog(btn_eliminar, "se ha borrado correctamente");
                                     }
                            }
@@ -295,11 +340,28 @@ public class escuela extends javax.swing.JDialog {
 
          private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
                   // TODO add your handling code here:
-                  
+
                   if (JOptionPane.showConfirmDialog(btn_salir, "¿desea volver a la ventana  principal?") == 0) {
                            dispose();
                   }
          }//GEN-LAST:event_btn_salirActionPerformed
+
+         private void txt_buscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyTyped
+                  // TODO add your handling code here:
+
+                  int pos = txt_buscar.getCaretPosition();
+                  String parametro = (txt_buscar.getText().substring(0, pos) + evt.getKeyChar() + txt_buscar.getText().substring(pos)).trim();
+
+                  if (parametro.trim().length() == 0) {
+                           control.fillTable2(tabla, "select *from  v_escuela_detalle");
+                  } else {
+
+                           String sql = "select * from v_escuela_detalle where escuela like '%" + parametro + "%' or facultad like '%" + parametro + "%'";
+                           control.fillTable2(tabla, sql);
+
+                  }
+                  validar.ocultarColumna(tabla, 0);
+         }//GEN-LAST:event_txt_buscarKeyTyped
 
          /**
           * @param args the command line arguments
@@ -352,10 +414,12 @@ public class escuela extends javax.swing.JDialog {
          private javax.swing.JComboBox<String> cb_facultad;
          private javax.swing.JLabel jLabel1;
          private javax.swing.JLabel jLabel2;
+         private javax.swing.JLabel jLabel3;
          private javax.swing.JPanel jPanel1;
          private javax.swing.JPanel jPanel2;
          private javax.swing.JScrollPane jScrollPane1;
          private javax.swing.JTextField jTextField1;
          private javax.swing.JTable tabla;
+         private javax.swing.JTextField txt_buscar;
          // End of variables declaration//GEN-END:variables
 }
