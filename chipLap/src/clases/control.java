@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package clases;
+import java.io.File;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
@@ -20,6 +21,7 @@ import net.sf.jasperreports.view.JasperViewer;
 import java.util.HashMap;
 import java.util.Map;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import jdk.dynalink.linker.support.Guards;
 import net.sf.jasperreports.engine.JRException;
 
 public class control {
@@ -271,5 +273,5 @@ public class control {
                            return null;
                   }
          }
-
+         
 }

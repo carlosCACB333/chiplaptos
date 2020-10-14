@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2190f941-5e37-480d-b46b-7ff220842935">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select f.nomfac, count(*) from alumnovulnerable a, facultad f,escuela e where
+a.idescuela=e.idescuela and e.idfacultad=f.idfacultad group by(f.nomfac);]]>
+	</queryString>
+	<field name="nomfac" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="count(*)" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="126" y="13" width="274" height="20" uuid="ba2a4792-cd28-41e7-8663-ec344cac94b8"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Cantidad de Alumnos por Facultad]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="60" y="0" width="245" height="20" uuid="a25dbdf4-9da5-488f-a512-31392e0c9bc2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="305" y="0" width="119" height="20" uuid="7958805d-78b3-4619-b0a7-7aae7da693ce"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="126" y="0" width="134" height="20" uuid="da383bbc-0540-4563-ae0a-26156f1d0d73"/>
+				<text><![CDATA[Facultad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="0" width="68" height="20" uuid="1b7477bd-7564-4b6c-b23b-be5ac4a6b28c"/>
+				<text><![CDATA[cantidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="305" y="0" width="119" height="20" uuid="cdff2507-aa0e-45e3-ac6b-cb6d6b8b917e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="60" y="0" width="245" height="20" uuid="c7b97944-953e-4530-a42a-1c8540e46ced"/>
+			</rectangle>
+			<textField>
+				<reportElement x="88" y="0" width="217" height="20" uuid="403847ad-1549-47a1-9e56-6d67495ac241"/>
+				<textFieldExpression><![CDATA[$F{nomfac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="0" width="68" height="20" uuid="14f18361-ea96-46fe-976a-eed465940a3d"/>
+				<textFieldExpression><![CDATA[$F{count(*)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="314" splitType="Stretch">
+			<barChart>
+				<chart>
+					<reportElement x="60" y="0" width="364" height="314" uuid="737ef0af-1682-4d10-b63a-f5d582918385"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{nomfac}]]></seriesExpression>
+						<categoryExpression><![CDATA[""]]></categoryExpression>
+						<valueExpression><![CDATA[$F{count(*)}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81825335-2899-4618-b01b-159e5b623e66">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="119"/>
+	<queryString language="SQL">
+		<![CDATA[select d.escuela, (select count(*) from v_detalle_entrega where tipo='laptop' and escuela=d.escuela)  as laptop,
+(select count(*) from v_detalle_entrega where tipo='CHIP DE DATOS' and escuela=d.escuela) as chip 
+from v_detalle_entrega as d  group by escuela ;]]>
+	</queryString>
+	<field name="escuela" class="java.lang.String"/>
+	<field name="laptop" class="java.lang.Long"/>
+	<field name="chip" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="54" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="19" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="270" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="92" y="70" width="486" height="178" uuid="d7b59487-c579-4f77-863b-ac850289e6df"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{escuela}]]></keyExpression>
+					<valueExpression><![CDATA[$F{chip}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>

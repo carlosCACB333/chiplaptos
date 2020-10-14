@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="754" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="792b6b12-951e-48a3-aab8-8e155ceb98e9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select d.escuela, (select count(*) from v_detalle_entrega where tipo='laptop' and escuela=d.escuela)  as laptop,
+(select count(*) from v_detalle_entrega where tipo='CHIP DE DATOS' and escuela=d.escuela) as chip 
+from v_detalle_entrega as d  group by escuela ;]]>
+	</queryString>
+	<field name="escuela" class="java.lang.String"/>
+	<field name="laptop" class="java.lang.Long"/>
+	<field name="chip" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="256" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="198" width="754" height="55" backcolor="#006699" uuid="c79019e9-96df-453e-b9c9-7e69ec38e467"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[cantidad de chip y laptops entregados por escuela]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="754" height="198" uuid="c2f21b0a-2742-46ec-a7e5-ae1622488e40"/>
+				<imageExpression><![CDATA["C:\\Users\\LENOVO\\Documents\\NetBeansProjects\\chiplaptos\\chipLap\\src\\img\\logofinal.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23">
+			<staticText>
+				<reportElement mode="Opaque" x="123" y="2" width="292" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="6a5d51dc-18b5-4ba8-ad02-32dc38a959d2"/>
+				<text><![CDATA[escuela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="415" y="2" width="82" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="4e8f2857-92f7-419d-a172-c8daad5b5a71"/>
+				<text><![CDATA[laptop]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="497" y="2" width="74" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="0eb95d82-11a1-424e-b0c5-3e05c68606fa"/>
+				<text><![CDATA[chip]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23">
+			<textField>
+				<reportElement x="123" y="0" width="292" height="20" uuid="db6d5cd8-53b5-40d9-bf17-da3809e1fe02"/>
+				<textFieldExpression><![CDATA[$F{escuela}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="0" width="82" height="20" uuid="23eee065-e4be-4d54-b625-922b622eb701"/>
+				<textFieldExpression><![CDATA[$F{laptop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="497" y="0" width="74" height="20" uuid="b748fdeb-8476-4d00-89a1-3fc4242776f3"/>
+				<textFieldExpression><![CDATA[$F{chip}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="340" splitType="Stretch">
+			<pieChart>
+				<chart theme="aegean">
+					<reportElement x="0" y="0" width="390" height="340" uuid="7c0c78a4-2492-42c8-abf0-7161d89e11cb"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend position="Bottom"/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{escuela}]]></keyExpression>
+					<valueExpression><![CDATA[$F{laptop}]]></valueExpression>
+					<labelExpression><![CDATA[$F{escuela}]]></labelExpression>
+				</pieDataset>
+				<piePlot isShowLabels="true">
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<pie3DChart>
+				<chart theme="aegean">
+					<reportElement x="405" y="0" width="377" height="340" uuid="9069bf44-abd5-44f5-801a-814f518f6b83"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend position="Bottom"/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{escuela}]]></keyExpression>
+					<valueExpression><![CDATA[$F{chip}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>

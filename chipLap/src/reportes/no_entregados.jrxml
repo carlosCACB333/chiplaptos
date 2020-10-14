@@ -1,29 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="20" uuid="8402e060-9365-4675-a058-c0e837604911">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from v_alumnosnoentrega]]>
+	</queryString>
+	<field name="dni" class="java.lang.String"/>
+	<field name="Datos" class="java.lang.String"/>
+	<field name="gen" class="java.lang.String"/>
+	<field name="codalum" class="java.lang.String"/>
+	<field name="nomesc" class="java.lang.String"/>
+	<field name="Ninguna entrega" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="229" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="555" height="148" uuid="d5a60347-cefe-40b8-a59c-e800704d2758"/>
+				<imageExpression><![CDATA["C:\\Users\\LENOVO\\Documents\\NetBeansProjects\\chiplaptos\\chipLap\\src\\img\\logofinal.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="68" y="159" width="424" height="53" forecolor="#FFFFFF" backcolor="#006699" uuid="af2f6258-9baa-4268-aaab-6453228f30d4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE ALUMNOS QUE FALTAN ENTREGAR]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="22">
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="8f29025d-98c6-47f2-bc74-38ff10a6be13"/>
+				<text><![CDATA[dni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="102" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="c8defc08-57a4-41e7-8a41-5fd0b84fb5a0"/>
+				<text><![CDATA[Datos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="202" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="27696ae9-9cf5-4444-aa62-7d486635e043"/>
+				<text><![CDATA[codalum]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="302" y="0" width="153" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="caa96fc5-7373-4f39-b930-3e24dcf48c70"/>
+				<text><![CDATA[nomesc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="455" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="91a1d139-dbf8-4629-a436-060b001b1875"/>
+				<text><![CDATA[equipo faltante]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23">
+			<textField>
+				<reportElement x="102" y="0" width="100" height="20" uuid="f99db868-eb05-461f-bf7d-18d929c265bd"/>
+				<textFieldExpression><![CDATA[$F{Datos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="0" width="100" height="20" uuid="668237c1-0835-4629-a41e-6c045a6b9ff9"/>
+				<textFieldExpression><![CDATA[$F{codalum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="0" width="153" height="20" uuid="25051466-b277-4cd0-bf93-72829e2b9b01"/>
+				<textFieldExpression><![CDATA[$F{nomesc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="14104526-88ee-45db-a7a5-a656d0060c58"/>
+				<textFieldExpression><![CDATA[$F{Ninguna entrega}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="0" width="100" height="20" uuid="cad2b420-551f-4862-97b9-a7f3f4574ddc"/>
+				<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
 </jasperReport>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="20" uuid="81825335-2899-4618-b01b-159e5b623e66">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="250"/>
+	<queryString language="SQL">
+		<![CDATA[select d.escuela, (select count(*) from v_detalle_entrega where tipo='laptop' and escuela=d.escuela)  as laptop,
+(select count(*) from v_detalle_entrega where tipo='CHIP DE DATOS' and escuela=d.escuela) as chip 
+from v_detalle_entrega as d  group by escuela ;]]>
+	</queryString>
+	<field name="escuela" class="java.lang.String"/>
+	<field name="laptop" class="java.lang.Long"/>
+	<field name="chip" class="java.lang.Long"/>
+	<variable name="laptop_1" class="java.lang.Long" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{laptop}]]></variableExpression>
+	</variable>
+	<variable name="chip_1" class="java.lang.Long" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{chip}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="182" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="555" height="154" uuid="c4dc889b-6e93-4143-9973-889cbd8436f9"/>
+				<imageExpression><![CDATA["C:\\Users\\LENOVO\\Documents\\NetBeansProjects\\chiplaptos\\chipLap\\src\\img\\logofinal.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="161" width="555" height="21" forecolor="#FFFFFF" backcolor="#006699" uuid="3a016f34-cb50-4877-86ca-47c05ab2e403"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD DE LAPTOPS Y CHIP DE DATOS ENTREGADOS POR ESCUELAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="130" y="2" width="197" height="20" backcolor="#006699" uuid="24fee720-c10e-4575-a709-bbb75502ee79"/>
+				<text><![CDATA[escuela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="327" y="2" width="59" height="20" backcolor="#006699" uuid="fac0704a-8c97-46ba-a11e-f22981f7bdf9"/>
+				<text><![CDATA[laptop]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="386" y="2" width="58" height="20" backcolor="#006699" uuid="67d1dbed-d127-456f-8edb-45d2c603edfe"/>
+				<text><![CDATA[chip]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="130" y="0" width="197" height="15" backcolor="#999999" uuid="5c6065d7-6d88-42fa-8454-24968aad64f9"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#006699"/>
+					<topPen lineWidth="0.5" lineColor="#006699"/>
+					<leftPen lineWidth="0.5" lineColor="#006699"/>
+					<bottomPen lineWidth="0.5" lineColor="#006699"/>
+					<rightPen lineWidth="0.5" lineColor="#006699"/>
+				</box>
+				<textElement>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{escuela}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="327" y="0" width="59" height="15" backcolor="#999999" uuid="297249b1-8b81-4957-9b77-944933630343"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#006699"/>
+					<topPen lineWidth="0.5" lineColor="#006699"/>
+					<leftPen lineWidth="0.5" lineColor="#006699"/>
+					<bottomPen lineWidth="0.5" lineColor="#006699"/>
+					<rightPen lineWidth="0.5" lineColor="#006699"/>
+				</box>
+				<textElement>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{laptop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="386" y="0" width="58" height="15" backcolor="#999999" uuid="2c37aed9-a91d-4fa8-83c5-7ea89937223e"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#006699"/>
+					<topPen lineWidth="0.5" lineColor="#006699"/>
+					<leftPen lineWidth="0.5" lineColor="#006699"/>
+					<bottomPen lineWidth="0.5" lineColor="#006699"/>
+					<rightPen lineWidth="0.5" lineColor="#006699"/>
+				</box>
+				<textElement>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chip}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="434" splitType="Stretch">
+			<pieChart>
+				<chart theme="default">
+					<reportElement mode="Transparent" x="0" y="15" width="555" height="218" uuid="d7b59487-c579-4f77-863b-ac850289e6df"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{escuela}]]></keyExpression>
+					<valueExpression><![CDATA[$F{laptop}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<pie3DChart>
+				<chart theme="default">
+					<reportElement x="0" y="233" width="555" height="197" uuid="6355e42a-1add-4489-b16c-9f4781db10bf"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{escuela}]]></keyExpression>
+					<valueExpression><![CDATA[$F{chip}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+			<staticText>
+				<reportElement x="399" y="37" width="117" height="36" uuid="bb23e13d-d7e7-422c-bb3f-00668717df4f"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[laptops]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="244" width="117" height="36" uuid="84970b67-abaa-414c-babb-395733b0b146"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[chips]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="327" y="0" width="59" height="15" forecolor="#FFFFFF" backcolor="#006699" uuid="307db3c1-5d13-44ba-afa8-070ea99bf0a6"/>
+				<textFieldExpression><![CDATA[$V{laptop_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="386" y="0" width="58" height="15" forecolor="#FFFFFF" backcolor="#006699" uuid="bdb561b1-2abf-4814-9c71-dfd8fb4ae67d"/>
+				<textFieldExpression><![CDATA[$V{chip_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="305" y="0" width="22" height="15" uuid="15d29ade-e3f0-4ed3-a58a-e209ea166293"/>
+				<text><![CDATA[total]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

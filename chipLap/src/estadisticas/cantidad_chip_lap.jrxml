@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="20" uuid="807e9242-cdb9-4370-b01c-79abc5d233c0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="14"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT count(tipo) AS TIPOS, (select tipo from v_detalle_entrega where tipo='laptop' limit 1) AS TIPO  FROM v_detalle_entrega v where tipo='laptop'
+
+union all
+
+SELECT count(tipo) AS TIPOS, (select tipo from v_detalle_entrega where tipo='chip de datos' limit 1) AS TIPO  FROM v_detalle_entrega v where tipo='chip de datos';]]>
+	</queryString>
+	<field name="TIPOS" class="java.lang.Long"/>
+	<field name="TIPO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="215" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="555" height="161" uuid="62a5cac2-30b5-4097-9b88-498cd2bfc501"/>
+				<imageExpression><![CDATA["C:\\Users\\LENOVO\\Documents\\NetBeansProjects\\chiplaptos\\chipLap\\src\\img\\logofinal.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="150" width="555" height="54" forecolor="#FFFFFF" backcolor="#006699" uuid="e87a4c98-7e18-4f9c-8af4-d39dd86eb73d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD DE CHIP Y LAPTOPS ENTREGADOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="201" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="ddbbf57b-e2d1-47b1-93fa-9a9aa7e5cd23"/>
+				<text><![CDATA[TIPOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="101" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#006699" uuid="41d8d947-9cd4-4413-8641-202d868fc211"/>
+				<text><![CDATA[TIPO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="201" y="2" width="103" height="20" uuid="7c98c223-be2c-49ed-a094-819eee955c48"/>
+				<textFieldExpression><![CDATA[$F{TIPOS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="2" width="100" height="20" uuid="81744b7d-a838-4825-9447-986f45e5a820"/>
+				<textFieldExpression><![CDATA[$F{TIPO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="509" splitType="Stretch">
+			<pie3DChart>
+				<chart>
+					<reportElement x="21" y="24" width="503" height="304" uuid="b89f904b-c3c6-4b31-aa62-91af2817159f"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{TIPO}]]></keyExpression>
+					<valueExpression><![CDATA[$F{TIPOS}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>
